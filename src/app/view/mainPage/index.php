@@ -1,7 +1,6 @@
-<h1>This is the main page lol</h1>
 <div class="container">
     <div class="row">
-        <div class="col-sm-6 col-md-4">
+        <!-- <div class="col-sm-6 col-md-4">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid architecto commodi cumque dicta doloribus et illum magni maxime minus nam natus nostrum provident quae quam, rem, tempore veniam vero.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam architecto aspernatur at delectus deleniti doloremque, doloribus ducimus eius in ipsum laudantium libero nulla officia sit sunt ullam veritatis voluptates.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut blanditiis eius, maxime minus nobis officia quaerat quisquam quo reiciendis reprehenderit repudiandae unde veniam? Assumenda corporis earum facilis! Alias, rem.</p>
@@ -56,5 +55,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores autem beatae delectus, earum temporibus veritatis. Accusamus accusantium, esse, est nesciunt nihil nostrum quis quo, repellendus sequi similique sunt voluptas?</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, ex, harum labore laboriosam neque odit, quaerat qui quidem sit soluta tempore vel veniam voluptas? Doloribus illo illum nam!</p>
         </div>
+        -->
+        <?php include ('albums.php')?>
     </div>
 </div>

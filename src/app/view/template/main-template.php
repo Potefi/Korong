@@ -1,3 +1,9 @@
+<?php
+
+/** @var string $title */
+/** @var string $content */
+
+?>
 <!doctype html>
 <html lang="hu">
 <head>
@@ -7,13 +13,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/logoResized-v1.svg">
+    <link rel="icon" href="img/logo/logoResized-v1.svg">
     <title><?= $title ?></title>
 </head>
 <body>
 <nav class="navbar navbar-expand-xl navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="http://localhost/zarodolgozat/" style="display: flex; align-items: center;"><img src="img/logoFullExpanded.svg" alt="korong" style="height: 50px;"></a>
+        <a class="navbar-brand" href="http://localhost/zarodolgozat/" style="display: flex; align-items: center;"><img src="img/logo/logoFullExpanded.svg" alt="korong" style="height: 50px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
