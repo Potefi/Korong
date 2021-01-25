@@ -1,3 +1,7 @@
+body{
+    padding-bottom: 2rem;
+}
+
 #brand{
     font-size: 3rem;
 }
@@ -7,4 +11,10 @@ h1{
 }
 .albumCard{
     margin-top: 1rem;
+}
+.album-shadow:hover{
+    box-shadow: 0 0 20px rgba(33,33,33,.2);
+}
+.album-shadow{
+    box-shadow: 0 0 5px rgba(33,33,33,.2);
 }
