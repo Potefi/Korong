@@ -51,7 +51,16 @@
         </div>
     </div>
 </nav>
-<?= $content ?>
+<div class="page-wrapper">
+    <?= $content ?>
+</div>
+<div id="footer" class="container-fluid bg-light text-center">
+    <a href="http://localhost/zarodolgozat/?controller=products">Termékek</a> |
+    <a href="http://localhost/zarodolgozat/?controller=login">Fiókom</a> |
+    <a href="http://localhost/zarodolgozat/?controller=contactDetails">Elérhetőség</a> |
+    <a href="http://localhost/zarodolgozat/?controller=contactDetails">ÁSZF</a><br>
+    <p>Copyright © 2021, Korong lemezbolt</p>
+</div>
 <script src="js/bootstrap.js"></script>
 </body>
 </html>

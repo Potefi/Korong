@@ -9,4 +9,8 @@ class MainPageController extends MainController
         $this->title = "Korong lemezbolt";
         return $this->render('index');
     }
+    public function albumsAll(){
+        $this->title = "Korong lemezbolt";
+        return $this->render('albums');
+    }
 }
