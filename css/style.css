@@ -27,15 +27,112 @@ h1{
 }
 #footer{
     flex-shrink: 0;
-    margin-top: 3rem;
     padding-top: 2rem;
     padding-bottom: 1em;
     color: grey;
 }
 #footer a{
-    color: grey;
+    color: #adb5bd;
     text-decoration: none;
 }
 #footer a:hover{
-    color: #343a40;
+    color: rgb(204, 210, 216);
+}
+.flex-container{
+    display: none;
+}
+#navBar{
+    background-color: rgb(244, 244, 244);
+}
+.carousel-inner .carousel-item{
+    height: 300px;
+}
+.carousel-item img{
+    position: absolute;
+    object-fit: cover;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    min-height: 300px;
+}
+.slider{
+    width: 100%;
+}
+.news{
+    width: 80%;
+}
+.newsText{
+    width: 110px;
+    background-color: #ff2115;
+    padding: 5px 0 5px 0;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+.newsText2{
+    width: 150px;
+    background-color: #ff2115;
+    padding: 5px 0 5px 0;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+.newsLine{
+    background-color: #ff2115;
+    height: 2px;
+    margin-bottom: 0;
+}
+@media only screen and (max-width: 1399px) {
+    #buyLink{
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+@media only screen and (min-width: 1712px) {
+    .flex-container{
+        display: flex;
+        width: 100%;
+    }
+    .flex-sidebar{
+        flex: 18%;
+    }
+    .flex-content{
+        flex: 82%;
+    }
+    .block-container{
+        display: none;
+    }
+}
+@media only screen and (min-width: 2000px) {
+    .flex-container{
+        display: flex;
+        width: 100%;
+    }
+    .flex-sidebar{
+        flex: 13%;
+    }
+    .flex-content{
+        flex: 87%;
+    }
+    .block-container{
+        display: none;
+    }
+}
+@media only screen and (max-width: 1712px) {
+    .block-container{
+        display: block;
+    }
+}
+@media only screen and (max-width: 633px) {
+    #card-sm{
+        max-width: 300px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .news{
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

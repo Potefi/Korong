@@ -53,4 +53,12 @@ class Album
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
+    public static function FindLastThree()
+    {
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `album` ORDER BY `id` DESC LIMIT 3";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
+    }
 }
