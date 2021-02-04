@@ -82,6 +82,19 @@ h1{
     height: 2px;
     margin-bottom: 0;
 }
+.priceDiv{
+    border: 1px solid #d5d5d5;
+    color: #454545;
+}
+.input-bg{
+    background-color: rgb(245, 247, 249);
+}
+.registration-link{
+    color: #4e555b;
+}
+.registration-link:hover{
+    color: #363636;
+}
 @media only screen and (max-width: 1399px) {
     #buyLink{
         position: absolute;

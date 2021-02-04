@@ -6,7 +6,7 @@ class ContactDetailsController extends MainController
 {
     protected $controllerName = 'ContactDetails';
     public function actionIndex(){
-        $this->title = "Elérhetőség";
+        $this->title = "Kapcsolat";
         return $this->render('index');
     }
 }

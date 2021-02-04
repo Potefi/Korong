@@ -1,8 +1,8 @@
 <div class="flex-container">
-    <div class="flex-sidebar border-right bg-white">
+    <div class="flex-sidebar border-right" style="background-color: rgb(232, 236, 242); color: #393e41">
         <?php include ('sidebar.php') ?>
     </div>
-    <div class="flex-content bg-light container-fluid pb-3">
+    <div class="flex-content container-fluid pb-3 bg-light">
         <div class="row slider mt-3">
             <?php include ('slider.php') ?>
         </div>

@@ -1,4 +1,4 @@
-<h1>Termékek</h1>
+<h1>Kategóriák</h1>
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4">

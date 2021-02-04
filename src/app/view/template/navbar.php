@@ -19,10 +19,10 @@
                     <a class="nav-link <?= ($title == "Korong lemezbolt") ? "active" : '' ?>" aria-current="page" href="http://localhost/zarodolgozat/">Főoldal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == "Elérhetőség") ? "active" : '' ?>" href="http://localhost/zarodolgozat/?controller=contactDetails">Elérhetőség</a>
+                    <a class="nav-link <?= ($title == "Kapcsolat") ? "active" : '' ?>" href="http://localhost/zarodolgozat/?controller=contactDetails">Kapcsolat</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == "Termékek") ? "active" : '' ?>" href="http://localhost/zarodolgozat/?controller=products">Termékek</a>
+                    <a class="nav-link <?= ($title == "Kategóriák") ? "active" : '' ?>" href="http://localhost/zarodolgozat/?controller=categories">Kategóriák</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?= ($title == "Részletes keresés") ? "active" : '' ?>" href="http://localhost/zarodolgozat/?controller=search">Részletes keresés</a>
@@ -32,11 +32,25 @@
                 <input class="form-control mr-2 in" type="search" placeholder="Keresés" aria-label="Search">
                 <button class="btn btn-outline-secondary" type="submit">Keresés</button>
             </form>
+
+
             <ul class="navbar-nav float-right-xl mb-2 mb-lg-0">
                 <li><hr class="dropdown-divider"></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://localhost/zarodolgozat/?controller=login">Bejelentkezés</a>
-                </li>
+                <?php if (isset($_SESSION['userId'])) : ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                            <?= \app\model\User::findOneById($_SESSION['userId'])->getUsername() ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="http://localhost/zarodolgozat/?controller=user&action=account">Fiókom</a></li>
+                            <li><a class="dropdown-item" href="http://localhost/zarodolgozat/?controller=user&action=logout">Kijelentkezés</a></li>
+                        </ul>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/zarodolgozat/?controller=user&action=login">Bejelentkezés</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
