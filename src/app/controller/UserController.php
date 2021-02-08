@@ -64,9 +64,27 @@ class UserController extends MainController
 
         if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']))
         {
-            User::registrateUser($_POST['username'], $_POST['password'], $_POST['email'], 'user');
-            header("Location: index.php");
-            exit();
+            // Ha létezik az adatbázisban a felhasználó, nem veszi fel az adatot, és hibával jelez a felhasználónak
+            if (!empty(User::findOneByUsername($_POST['username'])) && User::findOneByUsername($_POST['username'])->getUsername() == $_POST['username'])
+            {
+                $_SESSION['errorMadeByUser'] = 'usernameAlreadyInUse';
+                header("Location: index.php?controller=user&action=registration");
+                exit();
+            }
+            // Ha létezik az adatbázisban az email cím, nem veszi fel az adatot, és hibával jelez a felhasználónak
+            elseif (!empty(User::findOneByEmail($_POST['email'])) && User::findOneByEmail($_POST['email'])->getEmail() == $_POST['email'])
+            {
+                $_SESSION['errorMadeByUser'] = 'emailAlreadyInUse';
+                header("Location: index.php?controller=user&action=registration");
+                exit();
+            }
+            // Ha egyik sem létezik az adatbázisban, akkor felveszi a regisztrált adatokat, és a főoldalra irányít. Így még nincs bejelentkezve a felhasználó
+            else
+            {
+                User::registrateUser($_POST['username'], $_POST['password'], $_POST['email'], 'user');
+                header("Location: index.php");
+                exit();
+            }
         }
 
         // Regisztráló oldal betöltése

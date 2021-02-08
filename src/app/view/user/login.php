@@ -8,6 +8,7 @@
         <?php if (isset($_SESSION['errorMadeByUser']) && $_SESSION['errorMadeByUser'] == 'wrongEmailOrPassword') : ?>
             <p class="font-italic text-danger">Hibás email cím, vagy jelszó!</p>
         <?php endif; ?>
+        <?php $_SESSION['errorMadeByUser'] = ''; ?>
         <form action="index.php?controller=user&action=login" method="post">
             <div class="mb-3">
                 <label for="email" class="form-label">Email cím:</label>

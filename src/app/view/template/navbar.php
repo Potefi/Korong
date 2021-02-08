@@ -28,30 +28,46 @@
                     <a class="nav-link <?= ($title == "Részletes keresés") ? "active" : '' ?>" href="http://localhost/zarodolgozat/?controller=search">Részletes keresés</a>
                 </li>
             </ul>
+            <!--
             <form class="d-flex ml-auto">
                 <input class="form-control mr-2 in" type="search" placeholder="Keresés" aria-label="Search">
                 <button class="btn btn-outline-secondary" type="submit">Keresés</button>
             </form>
-
-
-            <ul class="navbar-nav float-right-xl mb-2 mb-lg-0">
-                <li><hr class="dropdown-divider"></li>
-                <?php if (isset($_SESSION['userId'])) : ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
-                            <?= \app\model\User::findOneById($_SESSION['userId'])->getUsername() ?>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="http://localhost/zarodolgozat/?controller=user&action=account">Fiókom</a></li>
-                            <li><a class="dropdown-item" href="http://localhost/zarodolgozat/?controller=user&action=logout">Kijelentkezés</a></li>
-                        </ul>
-                    </li>
-                <?php else: ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/zarodolgozat/?controller=user&action=login">Bejelentkezés</a>
-                    </li>
-                <?php endif; ?>
-            </ul>
+            -->
+            <div class="d-flex ml-auto">
+                <ul class="navbar-nav float-right-xl mb-2 mb-lg-0">
+                    <li><hr class="dropdown-divider"></li>
+                    <?php if (isset($_SESSION['userId'])) : ?>
+                        <!--
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                                <?= \app\model\User::findOneById($_SESSION['userId'])->getUsername() ?>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="http://localhost/zarodolgozat/?controller=user&action=account">Fiókom</a></li>
+                                <li><a class="dropdown-item" href="http://localhost/zarodolgozat/?controller=user&action=logout">Kijelentkezés</a></li>
+                            </ul>
+                        </li>
+                        -->
+                        <li class="nav-item">
+                            <a class="nav-link active disabled"><?= \app\model\User::findOneById($_SESSION['userId'])->getUsername() ?></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-none d-xl-block">|</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?= ($title == "Fiókom") ? "active" : '' ?>" href="http://localhost/zarodolgozat/?controller=user&action=account">Fiókom</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost/zarodolgozat/?controller=user&action=logout">Kijelentkezés</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost/zarodolgozat/?controller=user&action=login">Bejelentkezés</a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

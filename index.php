@@ -13,25 +13,21 @@ $actionName = !empty($_GET['action']) ? 'action' . ucfirst($_GET['action']) : 'a
 
 if ($controllerName == 'MainPageController'){
     $controller = new \app\controller\MainPageController();
-    $_SESSION['errorMadeByUser'] = '';
     $content = $controller->actionIndex();
 }
 elseif($controllerName == 'ContactDetailsController')
 {
     $controller = new \app\controller\ContactDetailsController();
-    $_SESSION['errorMadeByUser'] = '';
     $content = $controller->actionIndex();
 }
 elseif($controllerName == 'CategoriesController')
 {
     $controller = new \app\controller\CategoriesController();
-    $_SESSION['errorMadeByUser'] = '';
     $content = $controller->actionIndex();
 }
 elseif($controllerName == 'SearchController')
 {
     $controller = new \app\controller\SearchController();
-    $_SESSION['errorMadeByUser'] = '';
     $content = $controller->actionIndex();
 }
 elseif($controllerName == 'UserController')
@@ -44,7 +40,6 @@ elseif($controllerName == 'UserController')
     elseif ($actionName == 'actionRegistration')
     {
         $content = $controller->actionRegistration();
-        $_SESSION['errorMadeByUser'] = '';
     }
     elseif ($actionName == 'actionLogout')
     {
@@ -53,7 +48,6 @@ elseif($controllerName == 'UserController')
     elseif ($actionName == 'actionAccount')
     {
         $content = $controller->actionAccount();
-        $_SESSION['errorMadeByUser'] = '';
     }
 }
 

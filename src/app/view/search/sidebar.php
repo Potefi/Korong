@@ -7,29 +7,10 @@ use app\model\Product;
 
 ?>
 <div>
-    <!-- Elérhetőség -->
-    <div>
-        <h4 class="border-bottom pb-2 px-3 pt-3" style="background-color: rgb(237, 240, 244);">Elérhetőség:</h4>
-        <div class="mb-3 px-3">
-            <h6 class="d-inline">Cím: </h6><p class="d-inline">2234 Maglód, Madách Imre utca 12.</p>
-        </div>
-        <div class="mb-3 px-3">
-            <h6 class="d-inline">Telefonszám: </h6><p class="d-inline">+36304759162</p>
-        </div>
-        <div class="mb-3 px-3">
-            <h6 class="d-inline">Email: </h6><p class="d-inline">zazi.szabo@gmail.com</p>
-        </div>
-        <div class="pb-2 px-3">
-            <h6>Nyitvatartás: </h6>
-            <p class="mb-0">Hétfő-péntek: <b>8-17</b> óra</p>
-            <p class="mb-0">Szombat: <b>10-15</b> óra</p>
-            <p class="mb-0">Vasárnap: <b>zárva</b></p>
-        </div>
-    </div>
     <!-- Szűrés -->
     <div>
         <h4 class="border-bottom border-top pt-3 pb-2 px-3" style="background-color: rgb(237, 240, 244);">Szűrés:</h4>
-        <form method="post" action="index.php?controller=search&action=index">
+        <form action="index.php?controller=search&action=index" method="post">
             <!-- Előadó -->
             <div class="mb-3 px-3">
                 <label for="artist" class="h6">Előadó: </label>

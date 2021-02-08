@@ -5,6 +5,12 @@
         </div>
     </div>
     <div class="row">
+        <?php if (isset($_SESSION['errorMadeByUser']) && $_SESSION['errorMadeByUser'] == 'emailAlreadyInUse') : ?>
+            <p class="font-italic text-danger">Ez az email cím már használatban van!</p>
+        <?php elseif (isset($_SESSION['errorMadeByUser']) && $_SESSION['errorMadeByUser'] == 'usernameAlreadyInUse') : ?>
+            <p class="font-italic text-danger">Ez a felhasználónév már használatban van!</p>
+        <?php endif; ?>
+        <?php $_SESSION['errorMadeByUser'] = ''; ?>
         <form action="index.php?controller=user&action=registration" method="post">
             <div class="mb-3">
                 <label for="username" class="form-label">Felhasználónév*:</label>

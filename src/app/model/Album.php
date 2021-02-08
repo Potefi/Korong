@@ -9,11 +9,13 @@ use db\Database;
 class Album
 {
     private $id;
-    private $artist_id;
-    private $name;
-    private $img;
+    private $artistId;
+    private $title;
+    private $category;
+    private $cover;
 
     /**
+     *
      * @return mixed
      */
     public function getId()
@@ -25,21 +27,28 @@ class Album
      */
     public function getArtistId()
     {
-        return $this->artist_id;
+        return $this->artistId;
     }
     /**
      * @return mixed
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
     /**
      * @return mixed
      */
-    public function getImg()
+    public function getCover()
     {
-        return $this->img;
+        return $this->cover;
+    }
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**
@@ -53,10 +62,25 @@ class Album
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
+    public static function FindFiftyOldest()
+    {
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `album` ORDER BY `id` ASC LIMIT 50";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
+    }
     public static function FindLastThree()
     {
         $pdo = Database::getPdo();
         $sql = "SELECT * FROM `album` ORDER BY `id` DESC LIMIT 3";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
+    }
+    public static function findAllCategories(){
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `album` GROUP BY category";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);

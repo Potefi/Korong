@@ -1,60 +1,36 @@
-<h1>Részletes keresés</h1>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima molestiae perferendis reiciendis voluptas. Aliquid dignissimos doloremque doloribus expedita facilis fugit ipsam minus, molestiae officia optio quia sapiente sequi voluptate. Doloribus!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem dolores doloribus eos eum laborum nisi non, odit qui quo repellendus sed voluptate voluptatum? Ab nemo neque obcaecati quia sed.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores autem beatae delectus, earum temporibus veritatis. Accusamus accusantium, esse, est nesciunt nihil nostrum quis quo, repellendus sequi similique sunt voluptas?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, ex, harum labore laboriosam neque odit, quaerat qui quidem sit soluta tempore vel veniam voluptas? Doloribus illo illum nam!</p>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid architecto commodi cumque dicta doloribus et illum magni maxime minus nam natus nostrum provident quae quam, rem, tempore veniam vero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam architecto aspernatur at delectus deleniti doloremque, doloribus ducimus eius in ipsum laudantium libero nulla officia sit sunt ullam veritatis voluptates.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut blanditiis eius, maxime minus nobis officia quaerat quisquam quo reiciendis reprehenderit repudiandae unde veniam? Assumenda corporis earum facilis! Alias, rem.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid dolore doloribus error facere, incidunt labore laboriosam non officiis sequi. Ad atque, dolorem ducimus et impedit inventore laboriosam nulla reprehenderit!</p>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda, aut earum facere ipsa, iure iusto laboriosam magnam magni nam odio officia, optio quia repellat sed vel veniam. Deleniti, libero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur cum deleniti earum eum hic in incidunt ipsam iure nihil officiis placeat quasi qui quia repellat repudiandae, rerum veritatis voluptates?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ipsa iusto, libero molestias mollitia quibusdam quisquam recusandae unde. Consequatur eveniet optio quos voluptate. Commodi incidunt ipsa iste nostrum, temporibus voluptas.</p>
-        </div>
+<?php
+
+$path = 'src/app/view/album/';
+
+?>
+
+<!-- PC -->
+<div class="flex-container">
+    <div class="flex-sidebar border-right" style="background-color: rgb(232, 236, 242); color: #393e41">
+        <?php include ('sidebar.php') ?>
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid architecto commodi cumque dicta doloribus et illum magni maxime minus nam natus nostrum provident quae quam, rem, tempore veniam vero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam architecto aspernatur at delectus deleniti doloremque, doloribus ducimus eius in ipsum laudantium libero nulla officia sit sunt ullam veritatis voluptates.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut blanditiis eius, maxime minus nobis officia quaerat quisquam quo reiciendis reprehenderit repudiandae unde veniam? Assumenda corporis earum facilis! Alias, rem.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid dolore doloribus error facere, incidunt labore laboriosam non officiis sequi. Ad atque, dolorem ducimus et impedit inventore laboriosam nulla reprehenderit!</p>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda, aut earum facere ipsa, iure iusto laboriosam magnam magni nam odio officia, optio quia repellat sed vel veniam. Deleniti, libero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur cum deleniti earum eum hic in incidunt ipsam iure nihil officiis placeat quasi qui quia repellat repudiandae, rerum veritatis voluptates?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ipsa iusto, libero molestias mollitia quibusdam quisquam recusandae unde. Consequatur eveniet optio quos voluptate. Commodi incidunt ipsa iste nostrum, temporibus voluptas.</p>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima molestiae perferendis reiciendis voluptas. Aliquid dignissimos doloremque doloribus expedita facilis fugit ipsam minus, molestiae officia optio quia sapiente sequi voluptate. Doloribus!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem dolores doloribus eos eum laborum nisi non, odit qui quo repellendus sed voluptate voluptatum? Ab nemo neque obcaecati quia sed.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores autem beatae delectus, earum temporibus veritatis. Accusamus accusantium, esse, est nesciunt nihil nostrum quis quo, repellendus sequi similique sunt voluptas?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, ex, harum labore laboriosam neque odit, quaerat qui quidem sit soluta tempore vel veniam voluptas? Doloribus illo illum nam!</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda, aut earum facere ipsa, iure iusto laboriosam magnam magni nam odio officia, optio quia repellat sed vel veniam. Deleniti, libero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur cum deleniti earum eum hic in incidunt ipsam iure nihil officiis placeat quasi qui quia repellat repudiandae, rerum veritatis voluptates?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ipsa iusto, libero molestias mollitia quibusdam quisquam recusandae unde. Consequatur eveniet optio quos voluptate. Commodi incidunt ipsa iste nostrum, temporibus voluptas.</p>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid architecto commodi cumque dicta doloribus et illum magni maxime minus nam natus nostrum provident quae quam, rem, tempore veniam vero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam architecto aspernatur at delectus deleniti doloremque, doloribus ducimus eius in ipsum laudantium libero nulla officia sit sunt ullam veritatis voluptates.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut blanditiis eius, maxime minus nobis officia quaerat quisquam quo reiciendis reprehenderit repudiandae unde veniam? Assumenda corporis earum facilis! Alias, rem.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid dolore doloribus error facere, incidunt labore laboriosam non officiis sequi. Ad atque, dolorem ducimus et impedit inventore laboriosam nulla reprehenderit!</p>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima molestiae perferendis reiciendis voluptas. Aliquid dignissimos doloremque doloribus expedita facilis fugit ipsam minus, molestiae officia optio quia sapiente sequi voluptate. Doloribus!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem dolores doloribus eos eum laborum nisi non, odit qui quo repellendus sed voluptate voluptatum? Ab nemo neque obcaecati quia sed.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores autem beatae delectus, earum temporibus veritatis. Accusamus accusantium, esse, est nesciunt nihil nostrum quis quo, repellendus sequi similique sunt voluptas?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, ex, harum labore laboriosam neque odit, quaerat qui quidem sit soluta tempore vel veniam voluptas? Doloribus illo illum nam!</p>
+    <div class="flex-content container-fluid pb-3 bg-light">
+        <div class="row">
+            <?php include ("{$path}albums.php") ?>
         </div>
     </div>
 </div>
+<!-- Mobil -->
+<!--
+<div class="container bg-light block-container pb-3">
+    <div class="row mt-3 ml-sm-1 news">
+        <p class="mb-0 newsText rounded-top">Újdonságok</p>
+        <div class="newsLine"></div>
+    </div>
+    <div class="row">
+        <?php // include ('albumNews.php') ?>
+    </div>
+    <div class="row mt-3 ml-sm-1 news">
+        <p class="mb-0 featuredProducts rounded-top">Kiemelt termékek</p>
+        <div class="newsLine"></div>
+    </div>
+    <div class="row">
+        <?php // include ('albums.php') ?>
+    </div>
+</div>
+-->

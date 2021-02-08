@@ -1,3 +1,10 @@
+<?php
+
+    $path = 'src/app/view/album/';
+
+?>
+
+<!-- PC -->
 <div class="flex-container">
     <div class="flex-sidebar border-right" style="background-color: rgb(232, 236, 242); color: #393e41">
         <?php include ('sidebar.php') ?>
@@ -11,30 +18,31 @@
             <div class="newsLine"></div>
         </div>
         <div class="row">
-            <?php include ('albumNews.php')?>
+            <?php include("{$path}albumNews.php") ?>
         </div>
         <div class="row mt-3 ml-1 news">
-            <p class="mb-0 newsText2 rounded-top">Kiemelt termékek</p>
+            <p class="mb-0 featuredProducts rounded-top">Kiemelt termékek</p>
             <div class="newsLine"></div>
         </div>
         <div class="row">
-            <?php include ('albums.php')?>
+            <?php include("{$path}albums.php") ?>
         </div>
     </div>
 </div>
+<!-- Mobil -->
 <div class="container bg-light block-container pb-3">
     <div class="row mt-3 ml-sm-1 news">
         <p class="mb-0 newsText rounded-top">Újdonságok</p>
         <div class="newsLine"></div>
     </div>
     <div class="row">
-        <?php include ('albumNews.php')?>
+        <?php include("{$path}albumNews.php") ?>
     </div>
     <div class="row mt-3 ml-sm-1 news">
-        <p class="mb-0 newsText2 rounded-top">Kiemelt termékek</p>
+        <p class="mb-0 featuredProducts rounded-top">Kiemelt termékek</p>
         <div class="newsLine"></div>
     </div>
     <div class="row">
-        <?php include ('albums.php')?>
+        <?php include("{$path}albums.php") ?>
     </div>
 </div>

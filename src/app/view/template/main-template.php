@@ -3,6 +3,8 @@
 /** @var string $title */
 /** @var string $content */
 
+use app\model\User;
+
 ?>
 <!doctype html>
 <html lang="hu">

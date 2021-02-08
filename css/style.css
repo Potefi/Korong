@@ -17,10 +17,10 @@ h1{
     margin-top: 1rem;
 }
 .album-shadow:hover{
-    box-shadow: 0 0 20px rgba(33,33,33,.2);
+    box-shadow: 0 0 15px rgba(33,33,33,.2);
 }
 .album-shadow{
-    box-shadow: 0 0 5px rgba(33,33,33,.2);
+    box-shadow: 0 0 7px rgba(33,33,33,.2);
 }
 .page-wrapper{
     flex: 1 0 auto;
@@ -68,14 +68,16 @@ h1{
     text-align: center;
     font-weight: bold;
     color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-.newsText2{
+.featuredProducts{
     width: 150px;
     background-color: #ff2115;
     padding: 5px 0 5px 0;
     text-align: center;
     font-weight: bold;
     color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .newsLine{
     background-color: #ff2115;
@@ -95,13 +97,30 @@ h1{
 .registration-link:hover{
     color: #363636;
 }
-@media only screen and (max-width: 1399px) {
-    #buyLink{
-        position: absolute;
-        bottom: 15px;
-        right: 15px;
+.price{
+    font-size: 1.2rem;
+    color: #2f2f2f;
+}
+.no-cover-img{
+    min-width: 215px;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px){
+    .card-img-top{
+        min-width: 260px;
     }
 }
+@media only screen and (max-width: 1399px) {
+    .btn-container {
+        justify-content: space-between;
+        flex-direction: column;
+        display: flex;
+    }
+    .btn-container .btn-holder {
+        justify-content: flex-end;
+        display: flex;
+    }
+}
+
 @media only screen and (min-width: 1712px) {
     .flex-container{
         display: flex;
@@ -147,5 +166,21 @@ h1{
         max-width: 300px;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+@media only screen and (min-width: 297px) and (max-width: 575px) {
+    .no-cover-img{
+        width: 275px;
+    }
+    .card-img-top{
+        width: 275px;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px){
+    .no-cover-img{
+        width: 245px;
+    }
+    .card-img-top{
+        width: 245px;
     }
 }
