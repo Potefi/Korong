@@ -1,5 +1,7 @@
-<h1>Kapcsolat</h1>
 <div class="container">
+    <div class="row">
+        <h1>Kapcsolat</h1>
+    </div>
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima molestiae perferendis reiciendis voluptas. Aliquid dignissimos doloremque doloribus expedita facilis fugit ipsam minus, molestiae officia optio quia sapiente sequi voluptate. Doloribus!</p>

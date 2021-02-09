@@ -85,4 +85,13 @@ class Album
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
+    public static function findOneById($id){
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `album` WHERE `id` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id
+        ]);
+        return $stmt->fetchObject(self::class);
+    }
 }

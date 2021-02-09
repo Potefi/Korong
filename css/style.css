@@ -24,6 +24,9 @@ h1{
 }
 .page-wrapper{
     flex: 1 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
 }
 #footer{
     flex-shrink: 0;
@@ -104,9 +107,23 @@ h1{
 .no-cover-img{
     min-width: 215px;
 }
+.magnifier{
+    max-width: 35px;
+}
+.placeholderText{
+    text-align: center;
+    vertical-align: middle;
+    display: none;
+}
+.sidebar{
+    color: #393e41;
+}
+.searchResultsLine{
+    display: block;
+}
 @media only screen and (min-width: 1200px) and (max-width: 1399px){
     .card-img-top{
-        min-width: 260px;
+        min-width: 255px;
     }
 }
 @media only screen and (max-width: 1399px) {
@@ -121,19 +138,39 @@ h1{
     }
 }
 
-@media only screen and (min-width: 1712px) {
+@media only screen and (min-width: 1713px) {
     .flex-container{
         display: flex;
         width: 100%;
     }
     .flex-sidebar{
         flex: 18%;
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
+    .flex-sidebar > div{
+        flex: 1 1 auto;
     }
     .flex-content{
         flex: 82%;
     }
     .block-container{
         display: none;
+    }
+    .placeholderText{
+        display: block;
+        margin-top: 5rem;
+        text-shadow: 0 0 12px rgba(0,0,0,0.22);
+    }
+    .searchResultsLine{
+        width: 70%;
+        margin-left: 25px;
+    }
+    .searchResultsText{
+        font-size: 2.5rem;
+        color: #393e41;
+        padding-left: 25px;
     }
 }
 @media only screen and (min-width: 2000px) {
@@ -153,6 +190,9 @@ h1{
 }
 @media only screen and (max-width: 1712px) {
     .block-container{
+        display: block;
+    }
+    .page-wrapper{
         display: block;
     }
 }

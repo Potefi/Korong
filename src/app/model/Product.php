@@ -111,6 +111,15 @@ class Product
         $this->releaseDate = $releaseDate;
     }
 
+    public static function findOneById($id){
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `product` WHERE `id` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id
+        ]);
+        return $stmt->fetchObject(self::class);
+    }
     public static function findOneByIdOrderedByPriceAsc($albumId)
     {
         $pdo = Database::getPdo();
@@ -136,5 +145,31 @@ class Product
             "albumId" => $albumId
         ]);
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
+    }
+    public static function checkIfProductExists($id){
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `product` WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+        if (is_null($stmt->fetchAll(\PDO::FETCH_CLASS, self::class))){
+            return false;
+        }
+        return true;
+    }
+    public static function findLowestPrice(){
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `product` ORDER BY price ASC LIMIT 1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchObject(self::class);
+    }
+    public static function findHighestPrice(){
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `product` ORDER BY price DESC LIMIT 1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchObject(self::class);
     }
 }

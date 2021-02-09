@@ -18,7 +18,7 @@ foreach (Product::findAllFormatsOfProduct($album->getId()) as $item){
 ?>
 
 
-<div class="col-xxl-6 albumCard rounded pl-0 ml-3 album-shadow d-none d-xxl-block mt-2" style="max-width: 40rem; max-height: 200px;">
+<div class="col-6 albumCard rounded pl-0 ml-3 album-shadow d-none d-xxl-block mt-2" style="max-width: 40rem; max-height: 200px;">
     <div class="row g-0 position-relative">
         <div class="col-md-4">
             <?php if ($album->getCover() == null || !file_exists("img/albumCovers/{$album->getCover()}")) : ?>

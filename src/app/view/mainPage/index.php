@@ -6,7 +6,7 @@
 
 <!-- PC -->
 <div class="flex-container">
-    <div class="flex-sidebar border-right" style="background-color: rgb(232, 236, 242); color: #393e41">
+    <div class="flex-sidebar border-right sidebar bg-light">
         <?php include ('sidebar.php') ?>
     </div>
     <div class="flex-content container-fluid pb-3 bg-light">
