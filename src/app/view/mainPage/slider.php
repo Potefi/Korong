@@ -6,21 +6,21 @@
     </ol>
     <div class="carousel-inner rounded album-shadow">
         <div class="carousel-item active">
-            <a href="http://localhost/zarodolgozat/?controller=search" class="stretched-link"><img src="img/slider/mtbmb.jpeg" style="-webkit-filter: brightness(70%);" class="d-block w-100" alt="Music To Be Murdered By"></a>
+            <a href="http://localhost/zarodolgozat/?controller=album&action=albumSelected&id=5" class="stretched-link"><img src="img/slider/mtbmb.jpeg" class="d-block w-100" alt="Music To Be Murdered By"></a>
             <div class="carousel-caption d-none d-md-block">
                 <h5>Music To Be Murdered By</h5>
                 <p>Eminem legújabb stúdió albuma, és annak folytatása már rendelhető!</p>
             </div>
         </div>
-        <div class="carousel-item ">
-            <a href="http://localhost/zarodolgozat/?controller=search" class="stretched-link"><img src="img/slider/kidsseeghosts.png" style="-webkit-filter: brightness(70%);" class="d-block w-100" alt="Kids See Ghosts"></a>
+        <div class="carousel-item">
+            <a href="http://localhost/zarodolgozat/?controller=album&action=albumSelected&id=11" class="stretched-link"><img src="img/slider/kidsseeghosts.png" class="d-block w-100" alt="Kids See Ghosts"></a>
             <div class="carousel-caption d-none d-md-block">
                 <h5>Kids See Ghosts</h5>
                 <p>Előrendelhető Kanye West és Kid Cudi első közös albuma</p>
             </div>
         </div>
         <div class="carousel-item">
-            <a href="http://localhost/zarodolgozat/?controller=search" class="stretched-link"><img src="img/slider/stones-aftermath.png" style="-webkit-filter: brightness(70%);" class="d-block w-100" alt="..."></a>
+            <a href="http://localhost/zarodolgozat/?controller=album&action=albumSelected&id=5" class="stretched-link"><!-- TODO lemez felvitele --><img src="img/slider/stones-aftermath.png" class="d-block w-100" alt="..."></a>
             <div class="carousel-caption d-none d-md-block">
                 <h5>Aftermath</h5>
                 <p>A klasszikus Rolling Stones album újranyomva</p>

@@ -59,9 +59,15 @@
                             <a class="nav-link <?= ($title == "Fiókom") ? "active" : '' ?>" href="http://localhost/zarodolgozat/?controller=user&action=account">Fiókom</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link <?= ($title == "Kosár") ? "active" : '' ?>" href="http://localhost/zarodolgozat/?controller=cart&action=list">Kosár<?= (isset($_SESSION['cart']) && count($_SESSION['cart']) != 0)? '(' . count($_SESSION['cart']) . ')':'' ?></a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="http://localhost/zarodolgozat/?controller=user&action=logout">Kijelentkezés</a>
                         </li>
                     <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?= ($title == "Kosár") ? "active" : '' ?>" href="http://localhost/zarodolgozat/?controller=cart&action=list">Kosár<?= (isset($_SESSION['cart']) && count($_SESSION['cart']) != 0)? '(' . count($_SESSION['cart']) . ')':'' ?></a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="http://localhost/zarodolgozat/?controller=user&action=login">Bejelentkezés</a>
                         </li>

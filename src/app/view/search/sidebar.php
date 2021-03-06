@@ -2,6 +2,7 @@
 
 
 use app\model\Album;
+use app\model\Format;
 use app\model\Product;
 
 
@@ -26,10 +27,9 @@ use app\model\Product;
                 <label for="selectFormat" class="h6">Formátum: </label>
                 <select name="selectFormat" id="selectFormat" class="form-select input-bg" onchange="userToTable();">
                     <option value="default" hidden>Válaszd ki a formátumot..</option>
-                    <option value="all">Összes</option>
-                    <option disabled>-----------</option>
+                    <option value="all" class="font-italic">Összes</option>
                     <?php foreach (Product::findAllFormats() as $format) : ?>
-                        <option value="<?= $format->getFormat(); ?>" <?= isset($formatStored) && $formatStored == $format->getFormat()?'selected':'' ?>><?= $format->getFormat(); ?></option>
+                        <option class="font-weight-bold" value="<?= Format::findOneById($format->getFormatId())->getFormat(); ?>" <?= isset($formatStored) && $formatStored == Format::findOneById($format->getFormatId())->getFormat()?'selected':'' ?>><?= Format::findOneById($format->getFormatId())->getFormat(); ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -38,10 +38,9 @@ use app\model\Product;
                 <label for="selectCategory" class="h6">Kategória: </label>
                 <select name="selectCategory" id="selectCategory" class="form-select input-bg" onchange="userToTable();">
                     <option value="default" hidden selected>Válaszd ki a kategóriát..</option>
-                    <option value="all">Összes</option>
-                    <option disabled>-----------</option>
+                    <option value="all" class="font-italic">Összes</option>
                     <?php foreach (Album::findAllCategories() as $album) : ?>
-                        <option value="<?= $album->getCategory(); ?>" <?= isset($categoryStored) && $categoryStored == $album->getCategory()?'selected':'' ?>><?= $album->getCategory(); ?></option>
+                        <option class="font-weight-bold" value="<?= $album->getCategory(); ?>" <?= isset($categoryStored) && $categoryStored == $album->getCategory()?'selected':'' ?>><?= $album->getCategory(); ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

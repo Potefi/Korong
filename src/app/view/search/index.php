@@ -1,6 +1,7 @@
 <?php
 
 use app\model\Album;
+use app\model\Format;
 use app\model\Product;
 use db\Database;
 
@@ -53,19 +54,19 @@ if((isset($_POST['artist']) && !empty($_POST['artist'])) || (isset($_POST['album
                     <!-- Formátum -->
                     <div class="mb-2">
                         <label for="selectFormat" class="h6">Formátum: </label>
-                        <select name="selectFormat" id="selectFormat" class="form-select input-bg" onchange="userToTable();">
+                        <select name="selectFormat" id="selectFormat" class="form-select input-bg">
                             <option value="default" hidden>Válaszd ki a formátumot..</option>
                             <option value="all">Összes</option>
                             <option disabled>-----------</option>
                             <?php foreach (Product::findAllFormats() as $format) : ?>
-                                <option value="<?= $format->getFormat(); ?>" <?= isset($formatStored) && $formatStored == $format->getFormat()?'selected':'' ?>><?= $format->getFormat(); ?></option>
+                                <option value="<?= Format::findOneById($format->getFormatId())->getFormat(); ?>" <?= isset($formatStored) && $formatStored == Format::findOneById($format->getFormatId())->getFormat()?'selected':'' ?>><?= Format::findOneById($format->getFormatId())->getFormat(); ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                     <!-- Kategória -->
                     <div class="mb-2">
                         <label for="selectCategory" class="h6">Kategória: </label>
-                        <select name="selectCategory" id="selectCategory" class="form-select input-bg" onchange="userToTable();">
+                        <select name="selectCategory" id="selectCategory" class="form-select input-bg">
                             <option value="default" hidden selected>Válaszd ki a kategóriát..</option>
                             <option value="all">Összes</option>
                             <option disabled>-----------</option>

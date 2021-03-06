@@ -5,6 +5,7 @@
  */
 
 use app\model\Album;
+use app\model\Format;
 use app\model\Product;
 
 if((isset($_POST['artist']) && !empty($_POST['artist'])) || (isset($_POST['album']) && !empty($_POST['album'])) || (isset($_POST['selectCategory']) && ($_POST['selectCategory'] != 'default' || $_POST['selectCategory'] == 'all')) || (isset($_POST['selectFormat'])) && ($_POST['selectFormat'] != 'default' || $_POST['selectFormat'] == 'all')){
@@ -28,8 +29,8 @@ if((isset($_POST['artist']) && !empty($_POST['artist'])) || (isset($_POST['album
         $operator = 'AND';
     }
     if (isset($_POST['selectFormat']) && ($_POST['selectFormat'] != 'default' && $_POST['selectFormat'] != 'all')){
-        $format = strtolower($_POST['selectFormat']);
-        $sql .= "$operator product.format LIKE '%{$format}%' ";
+        $format = Format::findOneByFormat($_POST['selectFormat'])->getId() . ' ';
+        $sql .= "$operator product.formatId = {$format}";
         $operator = 'AND';
     }
     if (isset($_POST['selectCategory']) && ($_POST['selectCategory'] != 'default' && $_POST['selectCategory'] != 'all')){
@@ -49,9 +50,12 @@ if((isset($_POST['artist']) && !empty($_POST['artist'])) || (isset($_POST['album
     }
     $connect = mysqli_connect('127.0.0.1', 'root', '', 'musickorong');
     $stmt = mysqli_query($connect, $sql);
+
     /*
+    var_dump($sql . '\n');
     var_dump($stmt);
     var_dump(mysqli_error($connect));
+    die();
     */
 
     while ($row = mysqli_fetch_assoc($stmt)){

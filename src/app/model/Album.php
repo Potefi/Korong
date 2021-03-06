@@ -13,6 +13,7 @@ class Album
     private $title;
     private $category;
     private $cover;
+    private $releaseDate;
 
     /**
      *
@@ -50,6 +51,21 @@ class Album
     {
         return $this->category;
     }
+    /**
+     * @return mixed
+     */
+    public function getReleaseDate()
+    {
+        return $this->releaseDate;
+    }
+    /**
+     * @param mixed $releaseDate
+     */
+    public function setReleaseDate($releaseDate): void
+    {
+        $this->releaseDate = $releaseDate;
+    }
+
 
     /**
      * @return Album[]

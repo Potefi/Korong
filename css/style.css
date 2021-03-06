@@ -121,6 +121,22 @@ h1{
 .searchResultsLine{
     display: block;
 }
+.vertical-align{
+    vertical-align: middle;
+}
+thead>tr{
+    border-bottom: 1px solid rgba(23,23,23,0.86);
+}
+.table-products>tr:nth-of-type(odd):hover{
+    background-color: rgba(230,230,230,0.81) !important;
+}
+.carousel-item>a>img{
+    -webkit-filter: brightness(70%);
+}
+.form-control:focus, .form-select:focus{
+    border-color: rgba(29, 33, 36, 0.50);
+    box-shadow: 0 0 0 0.3rem rgba(29, 33, 36, 0.25);
+}
 @media only screen and (min-width: 1200px) and (max-width: 1399px){
     .card-img-top{
         min-width: 255px;
@@ -137,7 +153,6 @@ h1{
         display: flex;
     }
 }
-
 @media only screen and (min-width: 1713px) {
     .flex-container{
         display: flex;
@@ -222,5 +237,23 @@ h1{
     }
     .card-img-top{
         width: 245px;
+    }
+}
+@media only screen and (max-width: 767px){
+    .selected-album-title{
+        font-size: 2rem;
+        text-align: center;
+        margin-top: 2vh;
+    }
+    .selected-album-img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+}
+@media only screen and (min-width: 767px){
+    .form-select{
+        max-width: 300px;
     }
 }

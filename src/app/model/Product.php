@@ -9,11 +9,11 @@ use db\Database;
 class Product
 {
     private $id;
-    private $format;
+    private $formatId;
     private $condition;
     private $price;
     private $albumId;
-    private $releaseDate;
+    private $description;
 
     /**
      * @return mixed
@@ -34,17 +34,17 @@ class Product
     /**
      * @return mixed
      */
-    public function getFormat()
+    public function getFormatId()
     {
-        return $this->format;
+        return $this->formatId;
     }
 
     /**
-     * @param mixed $format
+     * @param mixed $formatId
      */
-    public function setFormat($format): void
+    public function setFormatId($formatId): void
     {
-        $this->format = $format;
+        $this->formatId = $formatId;
     }
 
     /**
@@ -94,21 +94,20 @@ class Product
     {
         $this->albumId = $albumId;
     }
-
     /**
      * @return mixed
      */
-    public function getReleaseDate()
+    public function getDescription()
     {
-        return $this->releaseDate;
+        return $this->description;
     }
 
     /**
-     * @param mixed $releaseDate
+     * @param mixed $description
      */
-    public function setReleaseDate($releaseDate): void
+    public function setDescription($description): void
     {
-        $this->releaseDate = $releaseDate;
+        $this->description = $description;
     }
 
     public static function findOneById($id){
@@ -132,14 +131,14 @@ class Product
     }
     public static function findAllFormats(){
         $pdo = Database::getPdo();
-        $sql = "SELECT * FROM `product` GROUP BY format";
+        $sql = "SELECT * FROM `product` GROUP BY formatId";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
     public static function findAllFormatsOfProduct($albumId){
         $pdo = Database::getPdo();
-        $sql = "SELECT * FROM `product` WHERE albumId = :albumId GROUP BY format";
+        $sql = "SELECT * FROM `product` WHERE albumId = :albumId GROUP BY formatId";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             "albumId" => $albumId
@@ -171,5 +170,14 @@ class Product
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchObject(self::class);
+    }
+    public static function findAllByAlbumId($id){
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `product` WHERE `albumId` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id
+        ]);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
 }
