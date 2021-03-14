@@ -110,9 +110,7 @@ h1{
 .magnifier{
     max-width: 35px;
 }
-.placeholderText{
-    text-align: center;
-    vertical-align: middle;
+.placeholderText, .placeholderImage{
     display: none;
 }
 .sidebar{
@@ -136,6 +134,15 @@ thead>tr{
 .form-control:focus, .form-select:focus{
     border-color: rgba(29, 33, 36, 0.50);
     box-shadow: 0 0 0 0.3rem rgba(29, 33, 36, 0.25);
+}
+.table-toggle:hover{
+    cursor: pointer;
+}
+.cart-img{
+    display: block;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px){
     .card-img-top{
@@ -175,8 +182,22 @@ thead>tr{
     }
     .placeholderText{
         display: block;
-        margin-top: 5rem;
         text-shadow: 0 0 12px rgba(0,0,0,0.22);
+        vertical-align: middle;
+        text-align: center;
+    }
+    .placeholderImage{
+        display: block;
+        height: 200px;
+        overflow: hidden;
+        border-bottom: 1px solid black;
+        width: 60%;
+        margin: auto;
+    }
+    .placeholderImage img{
+        display: block;
+        max-width: 300px;
+        margin: auto;
     }
     .searchResultsLine{
         width: 70%;
@@ -253,7 +274,7 @@ thead>tr{
     }
 }
 @media only screen and (min-width: 767px){
-    .form-select{
+    .input-group>.form-select{
         max-width: 300px;
     }
 }

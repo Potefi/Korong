@@ -67,5 +67,6 @@ if((isset($_POST['artist']) && !empty($_POST['artist'])) || (isset($_POST['album
     }
     echo "</div>";
 }else{
-    echo "<h3 class='placeholderText'>Itt fognak megjelenni az eredmények...</h3>";
+    echo '<div class="placeholderImage"><img src="img/logo/logoResized-v1.svg" class="rounded-left mx-auto mt-5" alt="Korong lemezbolt"></div>';
+    echo "<h2 class='placeholderText mt-3'>Itt fognak megjelenni a szűrés eredményei...</h2>";
 }

@@ -9,7 +9,7 @@
             <p class="font-italic text-danger">Hibás email cím, vagy jelszó!</p>
         <?php endif; ?>
         <?php $_SESSION['errorMadeByUser'] = ''; ?>
-        <form action="index.php?controller=user&action=login" method="post">
+        <form action="/zarodolgozat/?controller=user&action=login" method="post">
             <div class="mb-3">
                 <label for="email" class="form-label">Email cím:</label>
                 <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Add meg az email címed">
@@ -21,7 +21,7 @@
             <input type="submit" value="Bejelentkezés" class="btn btn-dark btn-block mt-4">
             <hr>
             <div>
-                <p class="float-right h6 font-weight-normal">Még nincs fiókod? <a href="index.php?controller=user&action=registration" class="text-decoration-none font-weight-bold registration-link">Regisztrálj!</a></p>
+                <p class="float-right h6 font-weight-normal">Még nincs fiókod? <a href="/zarodolgozat/?controller=user&action=registration" class="text-decoration-none font-weight-bold registration-link">Regisztrálj!</a></p>
             </div>
         </form>
     </div>

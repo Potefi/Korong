@@ -1,62 +1,140 @@
-<div class="container">
-    <div class="row">
-        <h1>Kapcsolat</h1>
+<div class="container text-center vertical-align">
+    <!-- PC view -->
+    <div class="d-none d-md-flex row bg-white shadow rounded my-5">
+        <div class="col-12 border-bottom">
+            <h1 class="mt-2 mb-3 display-4">Kapcsolat</h1>
+        </div>
+        <div class="col-4 pt-2 border-bottom border-right">
+            <h2 class="display-6">Cégnév</h2>
+            <p>Korong Kft.</p>
+        </div>
+        <div class="col-4 pt-2 border-bottom border-right">
+            <h2 class="display-6">Cím</h2>
+            <p>2234 Maglód, Madách Imre utca 12</p>
+        </div>
+        <div class="col-4 pt-2 border-bottom">
+            <h2 class="display-6">Email</h2>
+            <p>zazi.szabo@gmail.com</p>
+        </div>
+        <div class="col-4 pt-2 border-right border-bottom">
+            <h2 class="display-6">Telefon</h2>
+            <p>+36304759162</p>
+        </div>
+        <div class="col-4 pt-2 border-right border-bottom">
+            <h2 class="display-6">Nyitvatartás</h2>
+            <div class="container">
+                <div class="row pb-3">
+                    <div class="col-6 text-right">Hétfő:</div>
+                    <div class="col-6 text-left">8:00-17:00</div>
+                    <div class="col-6 text-right">Kedd:</div>
+                    <div class="col-6 text-left">8:00-17:00</div>
+                    <div class="col-6 text-right">Szerda:</div>
+                    <div class="col-6 text-left">8:00-17:00</div>
+                    <div class="col-6 text-right">Csütörtök:</div>
+                    <div class="col-6 text-left">8:00-17:00</div>
+                    <div class="col-6 text-right">Péntek:</div>
+                    <div class="col-6 text-left">8:00-17:00</div>
+                    <div class="col-6 text-right">Szombat:</div>
+                    <div class="col-6 text-left">10:00-15:00</div>
+                    <div class="col-6 text-right">Vasárnap:</div>
+                    <div class="col-6 text-left"><b>zárva</b></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 pt-2 border-bottom">
+            <h2 class="display-6">Adószám</h2>
+            <p>01010101-0-01</p>
+        </div>
+        <div class="col-12 pt-2">
+            <h2 class="display-6">Cégjegyzékszám</h2>
+            <p>01-10-010110</p>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima molestiae perferendis reiciendis voluptas. Aliquid dignissimos doloremque doloribus expedita facilis fugit ipsam minus, molestiae officia optio quia sapiente sequi voluptate. Doloribus!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem dolores doloribus eos eum laborum nisi non, odit qui quo repellendus sed voluptate voluptatum? Ab nemo neque obcaecati quia sed.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores autem beatae delectus, earum temporibus veritatis. Accusamus accusantium, esse, est nesciunt nihil nostrum quis quo, repellendus sequi similique sunt voluptas?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, ex, harum labore laboriosam neque odit, quaerat qui quidem sit soluta tempore vel veniam voluptas? Doloribus illo illum nam!</p>
+    <div class="d-none d-md-flex row bg-white rounded shadow my-5">
+        <div class="col-12 pt-2">
+            <h2 class="display-6">Írj nekünk!</h2>
         </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid architecto commodi cumque dicta doloribus et illum magni maxime minus nam natus nostrum provident quae quam, rem, tempore veniam vero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam architecto aspernatur at delectus deleniti doloremque, doloribus ducimus eius in ipsum laudantium libero nulla officia sit sunt ullam veritatis voluptates.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut blanditiis eius, maxime minus nobis officia quaerat quisquam quo reiciendis reprehenderit repudiandae unde veniam? Assumenda corporis earum facilis! Alias, rem.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid dolore doloribus error facere, incidunt labore laboriosam non officiis sequi. Ad atque, dolorem ducimus et impedit inventore laboriosam nulla reprehenderit!</p>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda, aut earum facere ipsa, iure iusto laboriosam magnam magni nam odio officia, optio quia repellat sed vel veniam. Deleniti, libero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur cum deleniti earum eum hic in incidunt ipsam iure nihil officiis placeat quasi qui quia repellat repudiandae, rerum veritatis voluptates?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ipsa iusto, libero molestias mollitia quibusdam quisquam recusandae unde. Consequatur eveniet optio quos voluptate. Commodi incidunt ipsa iste nostrum, temporibus voluptas.</p>
+        <div class="container px-5 pb-5 pt-3">
+            <?php include('form.php'); ?>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid architecto commodi cumque dicta doloribus et illum magni maxime minus nam natus nostrum provident quae quam, rem, tempore veniam vero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam architecto aspernatur at delectus deleniti doloremque, doloribus ducimus eius in ipsum laudantium libero nulla officia sit sunt ullam veritatis voluptates.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut blanditiis eius, maxime minus nobis officia quaerat quisquam quo reiciendis reprehenderit repudiandae unde veniam? Assumenda corporis earum facilis! Alias, rem.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid dolore doloribus error facere, incidunt labore laboriosam non officiis sequi. Ad atque, dolorem ducimus et impedit inventore laboriosam nulla reprehenderit!</p>
+
+
+    <!-- Mobile view -->
+    <div class="d-block d-md-none">
+        <div class="row mt-3 mb-2">
+            <h1 class="display-1">Kapcsolat</h1>
         </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda, aut earum facere ipsa, iure iusto laboriosam magnam magni nam odio officia, optio quia repellat sed vel veniam. Deleniti, libero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur cum deleniti earum eum hic in incidunt ipsam iure nihil officiis placeat quasi qui quia repellat repudiandae, rerum veritatis voluptates?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ipsa iusto, libero molestias mollitia quibusdam quisquam recusandae unde. Consequatur eveniet optio quos voluptate. Commodi incidunt ipsa iste nostrum, temporibus voluptas.</p>
+        <div class="table-responsive shadow mb-3 rounded">
+            <table class="my-0 table table-striped table-borderless vertical-align">
+                <tbody>
+                    <tr>
+                        <td class="text-left">Cégnév:</td>
+                        <td class="text-right">Korong Kft.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Cím:</td>
+                        <td class="text-right">2234 Maglód, Madách Imre utca 12</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Email:</td>
+                        <td class="text-right">zazi.szabo@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Telefon:</td>
+                        <td class="text-right">+36304759162</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Adószám:</td>
+                        <td class="text-right">01010101-0-01</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Nyitvatartás:</td>
+                        <td>
+                            <table class="table table-borderless text-right my-0">
+                                <tbody>
+                                    <tr>
+                                        <td class="my-0 py-0">Hétfő:</td>
+                                        <td class="my-0 py-0">8:00-17:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="my-0 py-0">Kedd:</td>
+                                        <td class="my-0 py-0">8:00-17:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="my-0 py-0">Szerda:</td>
+                                        <td class="my-0 py-0">8:00-17:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="my-0 py-0">Csütörtök:</td>
+                                        <td class="my-0 py-0">8:00-17:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="my-0 py-0">Péntek:</td>
+                                        <td class="my-0 py-0">8:00-17:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="my-0 py-0">Szombat:</td>
+                                        <td class="my-0 py-0">10:00-15:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="my-0 py-0">Vasárnap:</td>
+                                        <td class="my-0 py-0"><b>zárva</b></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left pb-3">Cégjegyzékszám:</td>
+                        <td class="text-right pb-3">01-10-010110</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima molestiae perferendis reiciendis voluptas. Aliquid dignissimos doloremque doloribus expedita facilis fugit ipsam minus, molestiae officia optio quia sapiente sequi voluptate. Doloribus!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem dolores doloribus eos eum laborum nisi non, odit qui quo repellendus sed voluptate voluptatum? Ab nemo neque obcaecati quia sed.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores autem beatae delectus, earum temporibus veritatis. Accusamus accusantium, esse, est nesciunt nihil nostrum quis quo, repellendus sequi similique sunt voluptas?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, ex, harum labore laboriosam neque odit, quaerat qui quidem sit soluta tempore vel veniam voluptas? Doloribus illo illum nam!</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda, aut earum facere ipsa, iure iusto laboriosam magnam magni nam odio officia, optio quia repellat sed vel veniam. Deleniti, libero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur cum deleniti earum eum hic in incidunt ipsam iure nihil officiis placeat quasi qui quia repellat repudiandae, rerum veritatis voluptates?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ipsa iusto, libero molestias mollitia quibusdam quisquam recusandae unde. Consequatur eveniet optio quos voluptate. Commodi incidunt ipsa iste nostrum, temporibus voluptas.</p>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid architecto commodi cumque dicta doloribus et illum magni maxime minus nam natus nostrum provident quae quam, rem, tempore veniam vero.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam architecto aspernatur at delectus deleniti doloremque, doloribus ducimus eius in ipsum laudantium libero nulla officia sit sunt ullam veritatis voluptates.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut blanditiis eius, maxime minus nobis officia quaerat quisquam quo reiciendis reprehenderit repudiandae unde veniam? Assumenda corporis earum facilis! Alias, rem.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid dolore doloribus error facere, incidunt labore laboriosam non officiis sequi. Ad atque, dolorem ducimus et impedit inventore laboriosam nulla reprehenderit!</p>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima molestiae perferendis reiciendis voluptas. Aliquid dignissimos doloremque doloribus expedita facilis fugit ipsam minus, molestiae officia optio quia sapiente sequi voluptate. Doloribus!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem dolores doloribus eos eum laborum nisi non, odit qui quo repellendus sed voluptate voluptatum? Ab nemo neque obcaecati quia sed.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores autem beatae delectus, earum temporibus veritatis. Accusamus accusantium, esse, est nesciunt nihil nostrum quis quo, repellendus sequi similique sunt voluptas?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, ex, harum labore laboriosam neque odit, quaerat qui quidem sit soluta tempore vel veniam voluptas? Doloribus illo illum nam!</p>
+        <div class="bg-white shadow rounded mb-3 p-2">
+            <h2 class="display-6">Írj nekünk!</h2>
+            <?php include('form.php'); ?>
         </div>
     </div>
 </div>

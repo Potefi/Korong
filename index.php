@@ -72,6 +72,10 @@ elseif($controllerName == 'CartController'){
         $content = $controller->actionPlaceInCart();
     }elseif ($actionName == 'actionEmptyCart'){
         $content = $controller->actionEmptyCart();
+    }elseif ($actionName == 'actionEmpty'){
+        $content = $controller->actionEmpty();
+    }elseif ($actionName == 'actionPurchase'){
+        $content = $controller->actionPurchase();
     }
 }
 

@@ -2,6 +2,7 @@
 
 
 use app\model\Album;
+use app\model\Category;
 use app\model\Format;
 use app\model\Product;
 
@@ -11,7 +12,7 @@ use app\model\Product;
     <!-- Szűrés -->
     <div>
         <h4 class="border-bottom pt-3 pb-2 px-3" style="background-color: rgb(240, 240, 240);">Szűrés:</h4>
-        <form action="index.php?controller=search&action=index" method="post">
+        <form action="/zarodolgozat/?controller=search&action=index" method="post">
             <!-- Előadó -->
             <div class="mb-3 px-3">
                 <label for="artist" class="h6">Előadó: </label>
@@ -40,7 +41,7 @@ use app\model\Product;
                     <option value="default" hidden selected>Válaszd ki a kategóriát..</option>
                     <option value="all" class="font-italic">Összes</option>
                     <?php foreach (Album::findAllCategories() as $album) : ?>
-                        <option class="font-weight-bold" value="<?= $album->getCategory(); ?>" <?= isset($categoryStored) && $categoryStored == $album->getCategory()?'selected':'' ?>><?= $album->getCategory(); ?></option>
+                        <option class="font-weight-bold" value="<?= $album->getCategory(); ?>" <?= isset($categoryStored) && $categoryStored == $album->getCategory()?'selected':'' ?>><?= Category::findOneById($album->getCategory())->getCategory(); ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

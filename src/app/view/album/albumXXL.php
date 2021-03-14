@@ -6,6 +6,7 @@
 
 use app\model\Album;
 use app\model\Artist;
+use app\model\Category;
 use app\model\Product;
 use app\model\Format;
 
@@ -29,8 +30,8 @@ foreach (Product::findAllFormatsOfProduct($album->getId()) as $item){
             <?php endif ?>
         </div>
         <div class="col-md-8 mt-3">
-            <a href="http://localhost/zarodolgozat/?controller=album&action=albumSelected&id=<?= $album->getId(); ?>" class="text-decoration-none text-dark stretched-link h5 card-title"><?= $album->getTitle(); ?></a>
-            <p class="card-text mb-0">Kategória: <?= $album->getCategory(); ?></p>
+            <a href="/zarodolgozat/?controller=album&action=albumSelected&id=<?= $album->getId(); ?>" class="text-decoration-none text-dark stretched-link h5 card-title"><?= $album->getTitle(); ?></a>
+            <p class="card-text mb-0">Kategória: <?= Category::findOneById($album->getCategory())->getCategory(); ?></p>
             <p class="card-text my-0">Formátum(ok): <?= substr($formats, 0, -1) ?></p>
             <p class="font-weight-light"><?= Artist::findOneById($album->getArtistId())->getName() ?></p>
             <p class="card-text d-inline price" style="position: absolute; bottom: 15px;"><?= Product::findOneByIdOrderedByPriceAsc($album->getId())->getPrice() ?> Ft-tól</p>

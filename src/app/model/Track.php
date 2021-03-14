@@ -73,7 +73,7 @@ class Track
     public static function findAllByProductId($id)
     {
         $pdo = Database::getPdo();
-        $sql = "SELECT * FROM `tracklist` WHERE `productId` = :id";
+        $sql = "SELECT * FROM `tracklist` WHERE `productId` = :id ORDER BY `numberOfTrack`";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':id' => $id

@@ -4,12 +4,11 @@
 
 use app\model\Format;
 use app\model\Product;
-use app\model\Track;
 
 ?>
 
 <h3 class="my-3 px-0">Termékek: </h3>
-<table class="table text-center vertical-align table-borderless" id="selected-album-table">
+<table class="table text-center vertical-align table-borderless">
     <thead>
         <tr>
             <th scope="col">Formátum</th>

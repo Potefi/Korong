@@ -20,7 +20,7 @@ CREATE TABLE `Album`
 	`id` INT NOT NULL AUTO_INCREMENT, 
 	`artistId` INT,
 	`title` VARCHAR(150),
-  `category` VARCHAR(50),
+  `category` INT,
   `cover` VARCHAR(250),
   `releaseDate` DATE,
 	PRIMARY KEY (`id`),
@@ -61,7 +61,40 @@ CREATE TABLE `Format`
   `id` INT NOT NULL AUTO_INCREMENT,
   `format` VARCHAR(10),
   PRIMARY KEY (`id`)
-)
+);
+CREATE TABLE `Category` 
+( 
+	`id` INT NOT NULL AUTO_INCREMENT, 
+	`category` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`id`)
+);
+CREATE TABLE `Order` 
+( 
+	`orderId` INT NOT NULL, 
+  `productId` INT NOT NULL,
+  `quantity` INT NOT NULL
+);
+CREATE TABLE `OrderDetails` 
+( 
+	`id` INT NOT NULL AUTO_INCREMENT, 
+  `userId` INT DEFAULT NULL,
+  `name` VARCHAR(60),
+  `phone` VARCHAR(20),
+  `postcode` INT,
+  `city` VARCHAR(60),
+  `address` VARCHAR(60),
+  `email` VARCHAR(60),
+  `takeover` INT,
+  `dateOfOrder` DATE,
+  `status` VARCHAR(250),
+  PRIMARY KEY (`id`)
+);
+CREATE TABLE `Takeover` 
+( 
+	`id` INT NOT NULL AUTO_INCREMENT, 
+  `name` VARCHAR(120),
+  PRIMARY KEY (`id`)
+);
 
 -- Adatok --
 INSERT INTO artist (`name`) VALUES
@@ -78,30 +111,36 @@ INSERT INTO artist (`name`) VALUES
   ('Eric Clapton'),
   ('Funktasztikus');
 
+ INSERT INTO artist (`name`) VALUES
+  ('Rolling Stones');
+
 INSERT INTO album (`artistId`, `title`, `category`, `cover`, `releaseDate`) VALUES
-  (1, 'Just As I Am', 'R&B', 'justAsIAm.jpg', '1971-05-01'),
-  (1, 'Still Bill', 'R&B', '', '1972-05-01'),
-  (2, 'The Eminem Show', 'hiphop', 'eminemShow.jpg', '2002-05-26'),
-  (2, 'The Marshall Mathers LP', 'hiphop', 'mmlp.jpg', '2000-05-23'),
-  (2, 'Music To Be Murdered By', 'hiphop', 'mtbmb.jpg', '2020-01-17'),
-  (3, 'Hybrid Theory', 'rock', 'hybridTheory.jpg', '2000-10-24'),
-  (3, 'Living Things', 'rock', 'livingThings.jpg', '2012-06-20'),
-  (4, 'Trunk Muzik 0-60', 'hiphop', 'trunkMuzik0-60.jpg', '2010-01-01'),
-  (4, 'Love Story', 'hiphop','loveStory.jpg', '2015-04-21'),
-  (5, 'Hotel California', 'rock','hotelCalifornia.jpg', '1976-12-08'),
-  (6, 'Kids See Ghosts', 'hiphop', 'kidsseeghosts.jpg', '2018-06-08'),
-  (7, 'The Reckoning', 'rock', 'theReckoning.jpg', '2010-01-15'),
-  (7, 'Gold Shadow', 'rock', 'goldShadow.jpg', '2015-01-12'),
-  (8, 'A Night At The Opera', 'rock', 'Queen_A_Night_At_The_Opera.png', '1975-11-21'),
-  (8, 'Greatest Hits II', 'rock', 'Queen_Greatest_Hits_2.png', '1991-10-28'),
-  (8, 'The Miracle', 'rock', 'queenTheMiracle.jpg', '1989-05-22'),
-  (9, 'ADHD', 'hiphop', 'Joyner_Lucas_ADHD.jpg', '2020-03-27'),
-  (9, 'Evolution', 'hiphop', 'joyner-evolution.png', '2020-10-23'),
-  (10, 'Demon Days', 'rock', 'gorillazDemonDays.jpg', '2008-05-23'),
-  (10, 'Gorillaz', 'rock', 'GorillazAlbum.jpg', '2001-03-26'),
-  (11, 'Slowhand', 'rock', 'EricClapton-Slowhand.jpg', '1977-11-25'),
-  (12, 'Rezonancia avagy a próféta alvilági zarándoklata', 'hiphop', 'rezonanciaFunk.jpg', '2019-12-18'),
-  (12, 'Táncdalok, Sanzonok, Melodrámák', 'hiphop', 'funktasztikus-tancdalok-sanzonok-melodramak-Cover-Art.png', '2011-10-01');
+  (1, 'Just As I Am', 3, 'justAsIAm.jpg', '1971-05-01'),
+  (1, 'Still Bill', 3, '', '1972-05-01'),
+  (2, 'The Eminem Show', 1, 'eminemShow.jpg', '2002-05-26'),
+  (2, 'The Marshall Mathers LP', 1, 'mmlp.jpg', '2000-05-23'),
+  (2, 'Music To Be Murdered By', 1, 'mtbmb.jpg', '2020-01-17'),
+  (3, 'Hybrid Theory', 2, 'hybridTheory.jpg', '2000-10-24'),
+  (3, 'Living Things', 2, 'livingThings.jpg', '2012-06-20'),
+  (4, 'Trunk Muzik 0-60', 1, 'trunkMuzik0-60.jpg', '2010-01-01'),
+  (4, 'Love Story', 1,'loveStory.jpg', '2015-04-21'),
+  (5, 'Hotel California', 2,'hotelCalifornia.jpg', '1976-12-08'),
+  (6, 'Kids See Ghosts', 1, 'kidsseeghosts.jpg', '2018-06-08'),
+  (7, 'The Reckoning', 2, 'theReckoning.jpg', '2010-01-15'),
+  (7, 'Gold Shadow', 2, 'goldShadow.jpg', '2015-01-12'),
+  (8, 'A Night At The Opera', 2, 'Queen_A_Night_At_The_Opera.png', '1975-11-21'),
+  (8, 'Greatest Hits II', 2, 'Queen_Greatest_Hits_2.png', '1991-10-28'),
+  (8, 'The Miracle', 2, 'queenTheMiracle.jpg', '1989-05-22'),
+  (9, 'ADHD', 1, 'Joyner_Lucas_ADHD.jpg', '2020-03-27'),
+  (9, 'Evolution', 1, 'joyner-evolution.png', '2020-10-23'),
+  (10, 'Demon Days', 2, 'gorillazDemonDays.jpg', '2008-05-23'),
+  (10, 'Gorillaz', 2, 'GorillazAlbum.jpg', '2001-03-26'),
+  (11, 'Slowhand', 2, 'EricClapton-Slowhand.jpg', '1977-11-25'),
+  (12, 'Rezonancia avagy a próféta alvilági zarándoklata', 1, 'rezonanciaFunk.jpg', '2019-12-18'),
+  (12, 'Táncdalok, Sanzonok, Melodrámák', 1, 'funktasztikus-tancdalok-sanzonok-melodramak-Cover-Art.png', '2011-10-01');
+
+INSERT INTO album (`artistId`, `title`, `category`, `cover`, `releaseDate`) VALUES
+  (13, 'Aftermath', 2, 'aftermath.jpg', '1966-04-15');
 
 INSERT INTO Product (`formatId`, `condition`, `price`, `albumId`, `description`) VALUES
   (2, 'M', 8500, 1, NULL),
@@ -113,7 +152,7 @@ INSERT INTO Product (`formatId`, `condition`, `price`, `albumId`, `description`)
   (2, 'VG+', 7900, 4, NULL),
   (1, 'M', 4600, 4,NULL),
   (2, 'M', 8500, 5, 'Limited Edition, Red w/ Black Splatter, Alternate Cover'),
-  (2, 'NM', 12500, 5, NULL),
+  (2, 'NM', 12500, 5, 'Deluxe edition'),
   (3, 'M', 7400, 5, NULL),
   (1, 'M', 4890, 5, NULL),
   (2, 'VG', 9400, 6, NULL),
@@ -144,11 +183,13 @@ INSERT INTO Product (`formatId`, `condition`, `price`, `albumId`, `description`)
   (1, 'M', 4750, 22, NULL),
   (1, 'M', 6250, 23, NULL);
 
+INSERT INTO Product (`formatId`, `condition`, `price`, `albumId`, `description`) VALUES
+  (2, 'M', 8500, 24, 'Limited Edition, Reissue, Stereo');
+
 INSERT INTO Format (`format`) VALUES 
 ('CD'),
 ('Vinyl LP'),
 ('Kazetta');
-
 
 INSERT INTO `tracklist` (`productId`, `numberOfTrack`, `title`, `length`) VALUES 
 (10001, 1, 'Harlem', '3:23'),
@@ -237,3 +278,12 @@ INSERT INTO `tracklist` (`productId`, `numberOfTrack`, `title`, `length`) VALUES
 (10009, 34, 'No Regrets (feat. Don Toliver)', '3:20'),
 (10009, 35, 'I WIll (feat. KXNG Crooked, Royce Da 5\'9" & Joell Ortiz)', '5:03'),
 (10009, 36, 'Alfred - Outro', '0:39');
+
+INSERT INTO `Category` (`category`) VALUES
+('hiphop'),
+('rock'),
+('R&B');
+
+INSERT INTO `Takeover` (`name`) VALUES
+('Házhoz szállítás'),
+('Személyes átvétel üzletünkben');

@@ -15,6 +15,8 @@ class User
     private $email;
     private $permission;
 
+    private $errors = [];
+
     // GETTERS & SETTERS
 
     /**
@@ -90,6 +92,38 @@ class User
 
     // FUNCTIONS
 
+    public function validate($username, $email, $password)
+    {
+        $this->errors = [];
+
+        if(!preg_match("/^[A-zÖÜÓŐÚÉÁŰÍöüóőúéáűí]+[\d\wÖÜÓŐÚÉÁŰÍöüóőúéáűí]*$/",$username))
+        {
+            $this->errors['username'] = 'A felhasználóneve csak betűket és számokat tartalmazhat! Az első karakter nem lehet szám!';
+        }
+        if(!preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/",$email))
+        {
+            $this->errors['email'] = 'Az email nem megfelelő formátumú!';
+        }
+        if(!preg_match("/^[\d\wÖÜÓŐÚÉÁŰÍöüóőúéáűí]{8,}$/",$password))
+        {
+            $this->errors['password'] = 'A jelszónak legalább 8 karakterből kell állnia! Különleges karaktereket nem tartalmazhat!';
+        }
+        return count($this->errors) == 0;
+    }
+
+    public function hasError($minek)
+    {
+        return array_key_exists($minek, $this->errors);
+    }
+    public function getError($minek)
+    {
+        return $this->errors[$minek];
+    }
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+
     public static function findOneById($id)
     {
         $pdo = Database::getPdo();
@@ -132,16 +166,27 @@ class User
         return false;
     }
 
-    public static function registrateUser($username, $password, $email, $permission)
+    public function registrateUser($username, $password, $email, $permission)
     {
-        $pdo = Database::getPdo();
-        $sql = "INSERT INTO `user` (username, password, email, permission) VALUES (:username, :password, :email, :permission)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            ':username' => $username,
-            ':password' => password_hash($password, PASSWORD_DEFAULT),
-            ':email' => $email,
-            ':permission' => $permission
-        ]);
+        if ($this->validate($username, $email, $password)) {
+            $pdo = Database::getPdo();
+            $sql = "INSERT INTO `user` (username, password, email, permission) VALUES (:username, :password, :email, :permission)";
+            $stmt = $pdo->prepare($sql);
+            $result = $stmt->execute([
+                ':username' => $username,
+                ':password' => password_hash($password, PASSWORD_DEFAULT),
+                ':email' => $email,
+                ':permission' => $permission
+            ]);
+            if ($stmt) {
+                $this->id = $pdo->lastInsertId();
+            }
+            if(false === $result){
+                $this->errors['adatbazis'] = 'Sikertelen mentés';
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 }

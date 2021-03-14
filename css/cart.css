@@ -1,0 +1,10 @@
+.page-wrapper{
+    background-image: url("../img/bg/background.svg") !important;
+    background-repeat: no-repeat;
+}
+@media (max-width: 1000px){
+    .page-wrapper{
+        background-attachment: fixed;
+        background-size: 100% 500px;
+    }
+}

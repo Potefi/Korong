@@ -4,10 +4,18 @@
  * @var $products Product[]
  */
 
+/**
+ * @var $purchase Purchase
+ */
+
 use app\model\Album;
 use app\model\Artist;
 use app\model\Format;
 use app\model\Product;
+use app\model\Purchase;
+use app\model\Takeover;
+use app\model\User;
+
 
 ?>
 <div class="container">
@@ -19,7 +27,8 @@ use app\model\Product;
     <?php endif; ?>
     <?php if (isset($products) && !empty($products) && count($products) > 0) : ?>
         <?php $price = 0 ?>
-        <h3 class="mt-3">Kosarad:</h3>
+        <h1 class="display-3">Kosár</h1>
+        <h3 class="mt-3">Termékek:</h3>
         <div class="table-responsive">
             <table class="table mb-0">
                 <thead>
@@ -52,24 +61,85 @@ use app\model\Product;
                 </tbody>
             </table>
         </div>
-        <a class="btn btn-danger w-100 mt-2 mb-5" href="index.php?controller=cart&action=emptyCart">Kosár kiürítése</a>
+        <a class="btn btn-danger w-100 mt-2 mb-5" href="/zarodolgozat/?controller=cart&action=emptyCart">Kosár kiürítése</a>
         <h3>Adatok:</h3>
-        <form action="index.php?controller=cart&action=purchase" method="post" class="my-3">
-            <div class="mb-2">
-                <label for="username" class="form-label">Név: </label>
-                <input type="text" class="form-control" name="invoice[username]" id="username" placeholder="Pl.: Tóth József">
+        <form action="/zarodolgozat/?controller=cart&action=purchase" method="post" class="my-3">
+            <div class="row mb-2">
+                <div class="form-group col-md-6">
+                    <label for="name" class="form-label">Teljes név: </label>
+                    <input type="text" class="form-control input-bg <?= $purchase->hasError("name")?"is-invalid":""?>" name="purchase[name]" id="name" required value="<?= $purchase->getName(); ?>">
+                    <?php if($purchase->hasError("name")) : ?>
+                        <div class="invalid-feedback mb-0 pb-0">
+                            <?= ($purchase->getErrors())["name"] ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="phone" class="form-label">Telefon: </label>
+                    <input type="tel" class="form-control input-bg <?= $purchase->hasError("phone")?"is-invalid":""?>" name="purchase[phone]" id="phone" placeholder="Pl.: 06304759162, +36304759162" required value="<?= $purchase->getPhone(); ?>">
+                    <?php if($purchase->hasError("phone")) : ?>
+                        <div class="invalid-feedback mb-0 pb-0">
+                            <?= ($purchase->getErrors())["phone"] ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
-            <div class="mb-2">
-                <label for="address" class="form-label">Cím: </label>
-                <input type="text" class="form-control" name="invoice[address]" id="address" placeholder="Pl.: Bátor utca 26.">
+            <div class="row mb-2">
+                <div class="form-group col-md-8">
+                    <label for="address" class="form-label">Cím: </label>
+                    <input type="text" class="form-control input-bg <?= $purchase->hasError("address")?"is-invalid":""?>" name="purchase[address]" id="address" placeholder="Pl.: Bátor utca 26." required value="<?= $purchase->getAddress(); ?>">
+                    <?php if($purchase->hasError("address")) : ?>
+                        <div class="invalid-feedback mb-0 pb-0">
+                            <?= ($purchase->getErrors())["address"] ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="postcode" class="form-label">Irányítószám: </label>
+                    <input type="text" class="form-control input-bg <?= $purchase->hasError("postcode")?"is-invalid":""?>" name="purchase[postcode]" id="postcode" required value="<?= $purchase->getPostcode(); ?>" placeholder="Pl.: 2234">
+                    <?php if($purchase->hasError("postcode")) : ?>
+                        <div class="invalid-feedback mb-0 pb-0">
+                            <?= ($purchase->getErrors())["postcode"] ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="taxNumber" class="form-label">Adószám: </label>
-                <input type="text" class="form-control" name="invoice[taxNumber]" id="taxNumber" placeholder="xxxxxxxx-y-zz">
+            <div class="row mb-3">
+                <div class="form-group col-md-6">
+                    <label for="city" class="form-label">Város: </label>
+                    <input type="text" class="form-control input-bg <?= $purchase->hasError("city")?"is-invalid":""?>" name="purchase[city]" id="city" required value="<?= $purchase->getCity(); ?>">
+                    <?php if($purchase->hasError("city")) : ?>
+                        <div class="invalid-feedback mb-0 pb-0">
+                            <?= ($purchase->getErrors())["city"] ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email" class="form-label">Email: </label>
+                    <input type="email" class="form-control input-bg <?= $purchase->hasError("email")?"is-invalid":""?>" name="purchase[email]" id="email" required value="<?= ($purchase->getEmail() != null )?$purchase->getEmail():(isset($_SESSION['userId'])?User::findOneById($_SESSION['userId'])->getEmail():'') ?>">
+                    <?php if($purchase->hasError("email")) : ?>
+                        <div class="invalid-feedback mb-0 pb-0">
+                            <?= ($purchase->getErrors())["email"] ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
-            <input type="submit" value="Vásárlás" class="btn btn-dark w-100">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="takeover" class="form-label d-block">Átvételi mód: </label>
+                        <select name="purchase[takeover]" id="takeover" class="form-select input-bg">
+                            <?php foreach (Takeover::FindAll() as $item) : ?>
+                                <option value="<?= $item->getId(); ?>"><?= $item->getName(); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Vásárlás" class="btn btn-dark w-100 mb-5">
         </form>
     <?php else: ?>
-        <h2 class="text-center mt-5 py-3 rounded shadow-sm" style="color: rgb(184, 117, 4); background-color: rgb(255, 243, 205);">Üres a kosarad.</h2>
+        <?php header("Location: /zarodolgozat/?controller=cart&action=empty"); ?>
+        <?php exit(); ?>
     <?php endif; ?>
 </div>

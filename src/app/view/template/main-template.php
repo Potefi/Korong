@@ -15,6 +15,9 @@ use app\model\User;
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <?php if ($title == 'Kosár - üres') : ?>
+        <link rel="stylesheet" href="css/cart.css">
+    <?php endif; ?>
     <link rel="icon" href="img/logo/logoResized-v1.svg">
     <title><?= $title ?></title>
 </head>
