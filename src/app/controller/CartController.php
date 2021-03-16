@@ -35,7 +35,47 @@ class CartController extends MainController
         exit();
     }
 
+    public function actionRemoveFromCart($id){
+        if (is_numeric($id)) {
+            if (isset($_SESSION['cart'])) {
+                foreach ($_SESSION['cart'] as $productId => $product) {
+                    if ($productId == $id) {
+                        unset($_SESSION['cart'][$productId]);
+                    }
+                }
+            }
+        }
+        header('Location: /zarodolgozat/?controller=cart&action=list');
+        exit();
+    }
+
+    public function actionModifyQuantity(){
+        if (isset($_SESSION['cart']) && isset($_POST['quantity'])) {
+            foreach ($_SESSION['cart'] as $id => $quantity) {
+                foreach ($_POST['quantity'] as $product => $newQuantity){
+                    if ($id == $product){
+                        $_SESSION['cart'][$id] = $newQuantity;
+                    }
+                }
+            }
+        }
+        header('Location: /zarodolgozat/?controller=cart&action=list');
+        exit();
+    }
+
     public function actionPurchase(){
+        // Change quantity if new was given
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $id => $quantity) {
+                if (isset($_POST['quantity'])){
+                    foreach ($_POST['quantity'] as $product => $newQuantity){
+                        if ($id == $product){
+                            $_SESSION['cart'][$id] = $newQuantity;
+                        }
+                    }
+                }
+            }
+        }
         $pdo = Database::getPdo();
         $pdo->beginTransaction();
         $purchase = new Purchase();

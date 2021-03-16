@@ -1,6 +1,6 @@
 <div>
     <!-- Elérhetőség -->
-    <div>
+    <div class="border-bottom">
         <h4 class="border-bottom pb-2 px-3 pt-3" style="background-color: rgb(240, 240, 240);">Elérhetőség:</h4>
         <div class="mb-3 px-3">
             <h6 class="d-inline">Cím: </h6><p class="d-inline">2234 Maglód, Madách Imre utca 12.</p>

@@ -76,6 +76,10 @@ elseif($controllerName == 'CartController'){
         $content = $controller->actionEmpty();
     }elseif ($actionName == 'actionPurchase'){
         $content = $controller->actionPurchase();
+    }elseif ($actionName == 'actionRemoveFromCart'){
+        $content = $controller->actionRemoveFromCart($_GET['id']);
+    }elseif ($actionName == 'actionModifyQuantity'){
+        $content = $controller->actionModifyQuantity();
     }
 }
 

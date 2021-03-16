@@ -11,7 +11,7 @@ use app\model\Product;
 <div>
     <!-- Szűrés -->
     <div>
-        <h4 class="border-bottom pt-3 pb-2 px-3" style="background-color: rgb(240, 240, 240);">Szűrés:</h4>
+        <h4 class="border-bottom pt-3 pb-2 px-3 filter-bgcolor">Szűrés:</h4>
         <form action="/zarodolgozat/?controller=search&action=index" method="post">
             <!-- Előadó -->
             <div class="mb-3 px-3">
