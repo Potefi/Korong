@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row mt-3 mb-2">
         <h1 class="display-1">Kategóriák</h1>
+        <hr class="w-75 mx-auto">
     </div>
     <div class="row mt-3">
         <div class="col-md-6 col-lg-4">
@@ -10,7 +11,6 @@
                         <input type="hidden" name="selectCategory" value="3">
                         <input type="image" src="img/logo/categories/r&bText.svg" alt="Submit">
                     </form>
-                    <!-- <h5 class="card-title category-text">R&B</h5> -->
                 </div>
             </div>
         </div>
