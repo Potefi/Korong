@@ -12,7 +12,7 @@ $collapseNoWrap = 'id="data' . $product->getId() . '" data-toggle="collapse" ari
 ?>
 <!-- Lists the details of the selected product // expands tracks -->
 <tr id="row<?= $product->getId(); ?>">
-    <th <?= $collapse ?> scope="row"><?= Format::findOneById($product->getFormatId())->getFormat(); ?></th>
+    <th <?= $collapse ?> scope="row"><?= $product->getFormat()->format; ?></th>
     <td <?= $collapse ?>><?= $product->getCondition(); ?></td>
     <td <?= $collapse ?>><i><?= is_null($product->getDescription())?'-':$product->getDescription(); ?></i></td>
     <td <?= $collapseNoWrap ?>><?= $product->getPrice(); ?> Ft</td>
@@ -38,7 +38,7 @@ $collapseNoWrap = 'id="data' . $product->getId() . '" data-toggle="collapse" ari
                 </thead>
                 <tbody>
                 <!-- Loop through tracks and list them -->
-                <?php foreach (Track::findAllByProductId($product->getId()) as $track) : ?>
+                <?php foreach ($product->getAllTracks() as $track) : ?>
                     <?php /** @var $track Track */ ?>
                     <tr class="table-hover-none">
                         <th scope="row"><?= $track->getNumberOfTrack(); ?></th>

@@ -8,7 +8,7 @@ $albums = Album::FindFiftyOldest();
 ?>
 <?php foreach ($albums as $album) : ?>
     <?php
-        if (gettype(Product::findOneByIdOrderedByPriceAsc($album->getId())) != 'boolean')
+        if (gettype($album->findLowestPrice()->price) != 'boolean')
         {
             include("albumXXL.php");
             include("albumSM.php");

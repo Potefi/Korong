@@ -12,7 +12,7 @@ use app\model\Track;
 <div class="card w-100 mb-2">
     <div class="card-body">
         <div class="position-relative" >
-            <h5 class="card-title"><?= Format::findOneById($product->getFormatId())->getFormat(); ?> - <?= $product->getCondition(); ?></h5>
+            <h5 class="card-title"><?= $product->getFormat()->format; ?> - <?= $product->getCondition(); ?></h5>
             <h6 class="card-subtitle mb-2 text-muted"><?= $product->getPrice(); ?> Ft</h6>
             <p class="card-text">Leírás:</a> <i><?= is_null($product->getDescription())?'-':$product->getDescription(); ?></i></p>
             <!-- Link to collapse tracks -->
@@ -21,7 +21,8 @@ use app\model\Track;
             <div class="collapse" id="tracks<?= $product->getId(); ?>">
                 <h4 class="py-2">Számok</h4>
                 <ol>
-                    <?php foreach (Track::findAllByProductId($product->getId()) as $track) : ?>
+                    <!-- TODO - tracks optimization -->
+                    <?php foreach ($product->getAllTracks() as $track) : ?>
                         <?php /** @var $track Track */ ?>
                         <li>
                             <?= $track->getTitle(); ?> - <?= $track->getLength() ?>

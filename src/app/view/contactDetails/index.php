@@ -60,68 +60,6 @@
         </div>
     </div>
 
-
-    <!-- PC test view -->
-    <!--
-    <div class="d-none d-md-flex row bg-white shadow rounded-bottom mb-5">
-        <div class="col-12 border-bottom">
-            <h1 class="mt-2 mb-3 display-4">Kapcsolat</h1>
-        </div>
-        <div class="col-4 pt-2 border-bottom border-right">
-            <h2 class="display-6">Cégnév</h2>
-            <p>Korong Kft.</p>
-        </div>
-        <div class="col-4 pt-2 border-bottom border-right">
-            <h2 class="display-6">Cím</h2>
-            <p>2234 Maglód, Madách Imre utca 12</p>
-        </div>
-        <div class="col-4 pt-2 border-bottom">
-            <h2 class="display-6">Email</h2>
-            <p>zazi.szabo@gmail.com</p>
-        </div>
-        <div class="col-4 pt-2 border-right border-bottom">
-            <h2 class="display-6">Telefon</h2>
-            <p>+36304759162</p>
-        </div>
-        <div class="col-4 pt-2 border-right border-bottom">
-            <h2 class="display-6">Nyitvatartás</h2>
-            <div class="container">
-                <div class="row pb-3">
-                    <div class="col-6 text-right">Hétfő:</div>
-                    <div class="col-6 text-left">8:00-17:00</div>
-                    <div class="col-6 text-right">Kedd:</div>
-                    <div class="col-6 text-left">8:00-17:00</div>
-                    <div class="col-6 text-right">Szerda:</div>
-                    <div class="col-6 text-left">8:00-17:00</div>
-                    <div class="col-6 text-right">Csütörtök:</div>
-                    <div class="col-6 text-left">8:00-17:00</div>
-                    <div class="col-6 text-right">Péntek:</div>
-                    <div class="col-6 text-left">8:00-17:00</div>
-                    <div class="col-6 text-right">Szombat:</div>
-                    <div class="col-6 text-left">10:00-15:00</div>
-                    <div class="col-6 text-right">Vasárnap:</div>
-                    <div class="col-6 text-left"><b>zárva</b></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-4 pt-2 border-bottom">
-            <h2 class="display-6">Adószám</h2>
-            <p>01010101-0-01</p>
-        </div>
-        <div class="col-12 pt-2 border-bottom border-1 border-secondary">
-            <h2 class="display-6">Cégjegyzékszám</h2>
-            <p>01-10-010110</p>
-        </div>
-        <div class="col-12 pt-2 border-left border-right border-1 border-secondary">
-            <h2 class="display-4">Írj nekünk!</h2>
-        </div>
-        <div class="container px-5 pb-5 pt-3 rounded-bottom border-left border-right border-bottom border-1 border-secondary">
-            <?php // include('form.php'); ?>
-        </div>
-    </div>
-    -->
-
-
     <!-- Mobile view -->
     <div class="d-block d-md-none">
         <div class="row mt-3 mb-2">

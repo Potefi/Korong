@@ -1,5 +1,6 @@
 -- SQL for musickorong DB --
 
+
 -- Adatbázis eldobása --
 DROP DATABASE IF EXISTS musickorong;
 

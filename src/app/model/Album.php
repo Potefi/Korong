@@ -15,6 +15,7 @@ class Album
     private $cover;
     private $releaseDate;
 
+
     /**
      *
      * @return mixed
@@ -109,5 +110,68 @@ class Album
             ':id' => $id
         ]);
         return $stmt->fetchObject(self::class);
+    }
+    public static function updateAlbumWithCover($id, $album, $cover)
+    {
+        $pdo = Database::getPdo();
+        $sql = "UPDATE `album` SET `artistId` = :artistId, `title` = :title, `category` = :category, `releaseDate` = :releaseDate, `cover` = :cover WHERE `id` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id,
+            ':artistId' => $album['artistId'],
+            ':title' => $album['title'],
+            ':category' => $album['category'],
+            ':releaseDate' => $album['releaseDate'],
+            ':cover' => $cover
+        ]);
+        if ($stmt){
+            return true;
+        }
+        return false;
+    }
+    public static function updateAlbumWithoutCover($id, $album)
+    {
+        $pdo = Database::getPdo();
+        $sql = "UPDATE `album` SET `artistId` = :artistId, `title` = :title, `category` = :category, `releaseDate` = :releaseDate WHERE `id` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id,
+            ':artistId' => $album['artistId'],
+            ':title' => $album['title'],
+            ':category' => $album['category'],
+            ':releaseDate' => $album['releaseDate']
+        ]);
+        if ($stmt){
+            return true;
+        }
+        return false;
+    }
+    public function getArtist(){
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `artist` WHERE `id` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $this->artistId
+        ]);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
+    }
+    public function getCategoryName(){
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `category` WHERE `id` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $this->category
+        ]);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
+    }
+    public function findLowestPrice()
+    {
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `product` WHERE `albumId` = :albumId ORDER BY price ASC LIMIT 1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':albumId' => $this->id
+        ]);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
     }
 }

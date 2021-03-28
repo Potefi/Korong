@@ -31,10 +31,10 @@ foreach (Product::findAllFormatsOfProduct($album->getId()) as $item){
         </div>
         <div class="col-md-8 mt-3">
             <a href="/zarodolgozat/?controller=album&action=albumSelected&id=<?= $album->getId(); ?>" class="text-decoration-none text-dark stretched-link h5 card-title"><?= $album->getTitle(); ?></a>
-            <p class="card-text mb-0">Kategória: <?= Category::findOneById($album->getCategory())->getCategory(); ?></p>
+            <p class="card-text mb-0">Kategória: <?= $album->getCategoryName()->category ?></p>
             <p class="card-text my-0">Formátum(ok): <?= substr($formats, 0, -1) ?></p>
-            <p class="font-weight-light"><?= Artist::findOneById($album->getArtistId())->getName() ?></p>
-            <p class="card-text d-inline price" style="position: absolute; bottom: 15px;"><?= Product::findOneByIdOrderedByPriceAsc($album->getId())->getPrice() ?> Ft-tól</p>
+            <p class="font-weight-light"><?= $album->getArtist()->name; ?></p>
+            <p class="card-text d-inline price" style="position: absolute; bottom: 15px;"><?= $album->findLowestPrice()->price ?> Ft-tól</p>
             <a class="btn btn-dark float-right mr-2" style="position:absolute; bottom: 15px; right: 0;" id="buyLink">Vásárlás</a>
         </div>
     </div>

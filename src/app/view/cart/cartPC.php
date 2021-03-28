@@ -36,9 +36,9 @@ use app\model\Purchase;
                 <tbody>
                 <?php foreach ($products as $item) : ?>
                     <tr>
-                        <th scope="row"><?= Album::findOneById($item->getAlbumId())->getTitle(); ?></th>
-                        <td class="text-center"><?= Artist::findOneById(Album::findOneById($item->getAlbumId())->getArtistId())->getName(); ?></td>
-                        <td class="text-center"><?= Format::findOneById($item->getFormatId())->getFormat(); ?></td>
+                        <th scope="row"><?= $item->getAlbumTitle()->title; ?></th>
+                        <td class="text-center"><?= $item->getArtist()->name; ?></td>
+                        <td class="text-center"><?= $item->getFormat()->format; ?></td>
                         <td class="text-center"><?= is_null($item->getDescription())?'-':$item->getDescription(); ?></td>
                         <td class="text-center" style="min-width: 200px;"><input type="number" name="quantity[<?= $item->getId(); ?>]" id="quantity" value="<?= $_SESSION['cart'][$item->getId()] ?>" class="form-control w-25 mx-auto d-inline" required min="1" oninput="modifyQuantity();"> db</td>
                         <td class="text-center"><?= $item->getPrice() * $_SESSION['cart'][$item->getId()]; ?> Ft</td>

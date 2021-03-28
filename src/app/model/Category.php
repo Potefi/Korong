@@ -11,6 +11,7 @@ class Category
     private $id;
     private $category;
 
+
     /**
      * @return mixed
      */
@@ -51,5 +52,13 @@ class Category
             ':id' => $id
         ]);
         return $stmt->fetchObject(self::class);
+    }
+    public static function findAll()
+    {
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `category`";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
 }

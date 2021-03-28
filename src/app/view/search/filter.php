@@ -10,7 +10,7 @@ use app\model\Product;
 
 if((isset($_POST['artist']) && !empty($_POST['artist'])) || (isset($_POST['album']) && !empty($_POST['album'])) || (isset($_POST['selectCategory']) && ($_POST['selectCategory'] != 'default' || $_POST['selectCategory'] == 'all')) || (isset($_POST['selectFormat'])) && ($_POST['selectFormat'] != 'default' || $_POST['selectFormat'] == 'all')){
     echo "<div class='row'>";
-    echo "<h3 class='searchResultsText'>Találatok:</h3>";
+    echo "<h3 class='searchResultsText display-5'>Találatok:</h3>";
     echo "<div class='border-bottom mb-2 searchResultsLine'></div>";
     $sql = "SELECT DISTINCT Album.id AS 'id' FROM Artist ";
     $sql .= "JOIN `Album` ON Artist.id = Album.artistId ";
@@ -58,12 +58,17 @@ if((isset($_POST['artist']) && !empty($_POST['artist'])) || (isset($_POST['album
     die();
     */
 
+    $numberOfResults = 0;
     while ($row = mysqli_fetch_assoc($stmt)){
         if (Product::checkIfProductExists($row['id'])) {
             $album = Album::findOneById($row['id']);
             include ("{$path}albumXXL.php");
             include ("{$path}albumSM.php");
+            $numberOfResults++;
         }
+    }
+    if ($numberOfResults == 0){
+        echo '<h3 class="display-6 text-center font-italic">Jelenleg nincs ilyen termék az áruházunkban...</h3>';
     }
     echo "</div>";
 }else{

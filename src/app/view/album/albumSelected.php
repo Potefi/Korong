@@ -28,7 +28,7 @@ $formats = Product::findAllFormatsOfProduct($_GET['id']);
             <!-- Details of the album -->
             <h2 class="selected-album-title mb-0"><?= $album->getTitle(); ?></h2>
             <h4 class="text-muted mt-0">Megjelenés: <?= $album->getReleaseDate() ?></h4>
-            <p class="mb-0 pb-0">Előadó: <i><?= Artist::findOneById($album->getArtistId())->getName(); ?></i></p>
+            <p class="mb-0 pb-0">Előadó: <i><?= $album->getArtist()->name; ?></i></p>
             <!-- Filter products by format -->
             <form action="/zarodolgozat/?controller=album&action=albumSelected&id=<?= $album->getId(); ?>" name="formatSelect" method="post">
                 <div class="input-group mt-2 format-select">
@@ -37,7 +37,7 @@ $formats = Product::findAllFormatsOfProduct($_GET['id']);
                         <option hidden>Válassz formátumot...</option>
                         <option value="all" <?= (isset($_POST['format']) && $_POST['format'] == 'all')?'selected':''; ?> class="font-italic">Összes</option>
                         <?php foreach ($formats as $format) : ?>
-                            <option class="font-weight-bold" <?= (isset($_POST['format']) && $_POST['format'] == Format::findOneById($format->getFormatId())->getFormat())?'selected':''; ?>><?= Format::findOneById($format->getFormatId())->getFormat(); ?></option>
+                            <option class="font-weight-bold" <?= (isset($_POST['format']) && $_POST['format'] == $format->getFormat()->format)?'selected':''; ?>><?= Format::findOneById($format->getFormatId())->getFormat(); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -76,7 +76,7 @@ $formats = Product::findAllFormatsOfProduct($_GET['id']);
             <h3 class="my-3 px-0">Termékek</h3>
             <?php foreach ($products as $product) : ?>
                 <?php if (isset($_POST['format']) && $_POST['format'] != 'all') : ?>
-                    <?php if (Format::findOneById($product->getFormatId())->getFormat() == $_POST['format']) : ?>
+                    <?php if ($product->getFormat()->format == $_POST['format']) : ?>
                         <?php include('albumSelectedProductsMobile.php'); ?>
                     <?php endif; ?>
                 <?php else : ?>

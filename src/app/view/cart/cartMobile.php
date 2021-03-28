@@ -32,9 +32,9 @@ use app\model\Purchase;
                     <?php foreach ($products as $item) : ?>
                         <tr>
                             <td>
-                                <p class="my-0 font-weight-bold"><?= Album::findOneById($item->getAlbumId())->getTitle(); ?></p>
-                                <p class="my-0 font-italic"><?= Artist::findOneById(Album::findOneById($item->getAlbumId())->getArtistId())->getName(); ?></p>
-                                <p class="my-0"><?= Format::findOneById($item->getFormatId())->getFormat(); ?></p>
+                                <p class="my-0 font-weight-bold"><?= $item->getAlbumTitle()->title; ?></p>
+                                <p class="my-0 font-italic"><?= $item->getArtist()->name; ?></p>
+                                <p class="my-0"><?= $item->getFormat()->format ?></p>
                                 <p class="my-0 font-italic"><?= is_null($item->getDescription())?'-':$item->getDescription(); ?></p>
                                 <div class="row vertical-align">
                                     <div class="my-0 col-6"><input type="number" name="quantity[<?= $item->getId(); ?>]" id="quantity" value="<?= $_SESSION['cart'][$item->getId()] ?>" class="form-control w-75 mx-auto d-inline" required min="1" oninput="modifyQuantity();"> db</div>

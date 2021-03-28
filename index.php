@@ -1,5 +1,6 @@
 <?php
 
+use app\controller\AdminController;
 use app\controller\AlbumController;
 use app\controller\CartController;
 use app\controller\CategoriesController;
@@ -8,6 +9,7 @@ use app\controller\MainPageController;
 use app\controller\NotFoundController;
 use app\controller\SearchController;
 use app\controller\UserController;
+use app\model\User;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 
@@ -108,6 +110,35 @@ elseif($controllerName == 'CartController'){
     }elseif ($actionName == 'actionModifyQuantity'){
         $controller = new CartController();
         $content = $controller->actionModifyQuantity();
+    }
+}
+elseif($controllerName == 'AdminController'){
+    if (isset($_SESSION['userId']) && User::findOneById($_SESSION['userId'])->getPermission() == 'admin') {
+        if ($actionName == 'actionIndex') {
+            $controller = new AdminController();
+            $content = $controller->actionIndex();
+        }elseif ($actionName == 'actionArtists'){
+            $controller = new AdminController();
+            $content = $controller->actionArtists();
+        }elseif ($actionName == 'actionAlbums'){
+            $controller = new AdminController();
+            $content = $controller->actionAlbums();
+        }elseif ($actionName == 'actionModifyAlbum'){
+            $controller = new AdminController();
+            $content = $controller->actionModifyAlbum();
+        }elseif ($actionName == 'actionProducts'){
+            $controller = new AdminController();
+            $content = $controller->actionProducts();
+        }elseif ($actionName == 'actionNewArtist'){
+            $controller = new AdminController();
+            $content = $controller->actionNewArtist();
+        }elseif ($actionName == 'actionDeleteArtist'){
+            $controller = new AdminController();
+            $content = $controller->actionDeleteArtist();
+        }elseif ($actionName == 'actionModifyArtist'){
+            $controller = new AdminController();
+            $content = $controller->actionModifyArtist();
+        }
     }
 }
 

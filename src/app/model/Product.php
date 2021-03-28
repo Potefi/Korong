@@ -5,6 +5,8 @@ namespace app\model;
 
 
 use db\Database;
+use app\model\Track;
+
 
 class Product
 {
@@ -110,22 +112,20 @@ class Product
         $this->description = $description;
     }
 
+    public static function FindAll()
+    {
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `product`";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
+    }
     public static function findOneById($id){
         $pdo = Database::getPdo();
         $sql = "SELECT * FROM `product` WHERE `id` = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':id' => $id
-        ]);
-        return $stmt->fetchObject(self::class);
-    }
-    public static function findOneByIdOrderedByPriceAsc($albumId)
-    {
-        $pdo = Database::getPdo();
-        $sql = "SELECT * FROM `product` WHERE `albumId` = :albumId ORDER BY price ASC LIMIT 1";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            ':albumId' => $albumId
         ]);
         return $stmt->fetchObject(self::class);
     }
@@ -179,5 +179,42 @@ class Product
             ':id' => $id
         ]);
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
+    }
+    public function getFormat(){
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `format` WHERE `id` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $this->formatId
+        ]);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
+    }
+    public function getAllTracks()
+    {
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `tracklist` WHERE `productId` = :id ORDER BY `numberOfTrack`";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $this->id
+        ]);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, Track::class);
+    }
+    public function getAlbumTitle(){
+        $pdo = Database::getPdo();
+        $sql = "SELECT * FROM `album` WHERE `id` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $this->albumId
+        ]);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
+    }
+    public function getArtist(){
+        $pdo = Database::getPdo();
+        $sql = "SELECT artist.id AS 'id', artist.name AS 'name' FROM artist JOIN album ON artist.id = album.artistId AND album.id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $this->albumId
+        ]);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
     }
 }

@@ -24,10 +24,10 @@ foreach (Product::findAllFormatsOfProduct($album->getId()) as $item){
         <img src="img/logo/logoResized-v1.svg" class="card-img-top" alt="<?= $album->getTitle(); ?>">
         <div class="card-body btn-container">
             <a href="/zarodolgozat/?controller=album&action=albumSelected&id=<?= $album->getId(); ?>" style="text-decoration: none;" class="text-dark stretched-link"><h5 class="card-title"><?= $album->getTitle(); ?></h5></a>
-            <p class="card-text mb-0">Kategória: <?= Category::findOneById($album->getCategory())->getCategory(); ?></p>
+            <p class="card-text mb-0">Kategória: <?= $album->getCategoryName()->category ?></p>
             <p class="card-text mt-0">Formátum(ok): <?= substr($formats, 0, -1) ?></p>
-            <p class="font-weight-light"><?= Artist::findOneById($album->getArtistId())->getName() ?></p>
-            <p class="card-text price"><?= Product::findOneByIdOrderedByPriceAsc($album->getId())->getPrice() ?> Ft-tól</p>
+            <p class="font-weight-light"><?= $album->getArtist()->name; ?></p>
+            <p class="card-text price"><?= $album->findLowestPrice()->price ?> Ft-tól</p>
             <div class="btn-holder">
                 <a class="btn btn-dark d-block w-100" id="buyLink">Vásárlás</a>
             </div>
@@ -40,10 +40,10 @@ foreach (Product::findAllFormatsOfProduct($album->getId()) as $item){
         <img src="img/albumCovers/<?= $album->getCover(); ?>" class="card-img-top" alt="<?= $album->getTitle(); ?>">
         <div class="card-body btn-container">
             <a href="/zarodolgozat/?controller=album&action=albumSelected&id=<?= $album->getId(); ?>" style="text-decoration: none;" class="text-dark stretched-link"><h5 class="card-title"><?= $album->getTitle(); ?></h5></a>
-            <p class="card-text mb-0">Kategória: <?= Category::findOneById($album->getCategory())->getCategory(); ?></p>
+            <p class="card-text mb-0">Kategória: <?= $album->getCategoryName()->category ?></p>
             <p class="card-text mt-0">Formátum(ok): <?= substr($formats, 0, -1) ?></p>
-            <p class="font-weight-light"><?= Artist::findOneById($album->getArtistId())->getName() ?></p>
-            <p class="card-text price"><?= Product::findOneByIdOrderedByPriceAsc($album->getId())->getPrice() ?> Ft-tól</p>
+            <p class="font-weight-light"><?= $album->getArtist()->name; ?></p>
+            <p class="card-text price"><?= $album->findLowestPrice()->price ?> Ft-tól</p>
             <div class="btn-holder">
                 <a class="btn btn-dark d-block w-100" id="buyLink">Vásárlás</a>
             </div>

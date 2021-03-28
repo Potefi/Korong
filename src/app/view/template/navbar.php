@@ -7,7 +7,7 @@
 use app\model\User;
 
 ?>
-<nav class="navbar navbar-expand-xl navbar-light sticky-top border-bottom" id="navBar">
+<nav class="navbar navbar-expand-xl navbar-light sticky-top" id="navBar">
     <div class="container-fluid">
         <a class="navbar-brand" href="/zarodolgozat/" style="display: flex; align-items: center;"><img src="img/logo/logoFullExpanded.svg" alt="korong" style="height: 50px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +27,11 @@ use app\model\User;
                 <li class="nav-item">
                     <a class="nav-link <?= ($title == "Részletes keresés") ? "active" : '' ?>" href="/zarodolgozat/?controller=search">Részletes keresés</a>
                 </li>
+                <?php if (isset($_SESSION['userId']) && User::findOneById($_SESSION['userId'])->getPermission() == 'admin') : ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?= (strpos($title, "Admin") !== false) ? "active" : '' ?>" href="/zarodolgozat/?controller=admin">Admin</a>
+                    </li>
+                <?php endif; ?>
             </ul>
             <div class="d-flex ml-auto">
                 <ul class="navbar-nav float-right-xl mb-2 mb-lg-0">
@@ -42,14 +47,14 @@ use app\model\User;
                             <a class="nav-link <?= ($title == "Fiókom") ? "active" : '' ?>" href="/zarodolgozat/?controller=user&action=account">Fiókom</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?= ($title == "Kosár" || $title == "Kosár - üres") ? "active" : '' ?>" href="/zarodolgozat/?controller=cart&action=list">Kosár<?= (isset($_SESSION['cart']) && count($_SESSION['cart']) != 0)? '(' . count($_SESSION['cart']) . ')':'' ?></a>
+                            <a class="nav-link <?= (strpos($title, "Kosár") !== false) ? "active" : '' ?>" href="/zarodolgozat/?controller=cart&action=list">Kosár<?= (isset($_SESSION['cart']) && count($_SESSION['cart']) != 0)? '(' . count($_SESSION['cart']) . ')':'' ?></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/zarodolgozat/?controller=user&action=logout">Kijelentkezés</a>
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link <?= ($title == "Kosár" || $title == "Kosár - üres") ? "active" : '' ?>" href="/zarodolgozat/?controller=cart&action=list">Kosár<?= (isset($_SESSION['cart']) && count($_SESSION['cart']) != 0)? '(' . count($_SESSION['cart']) . ')':'' ?></a>
+                            <a class="nav-link <?= (strpos($title, "Kosár") !== false) ? "active" : '' ?>" href="/zarodolgozat/?controller=cart&action=list">Kosár<?= (isset($_SESSION['cart']) && count($_SESSION['cart']) != 0)? '(' . count($_SESSION['cart']) . ')':'' ?></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/zarodolgozat/?controller=user&action=login">Bejelentkezés</a>

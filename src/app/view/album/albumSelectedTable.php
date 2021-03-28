@@ -22,7 +22,7 @@ use app\model\Product;
     <tbody class="table-products accordion" id="accordionTable">
         <?php foreach ($products as $product) : ?>
             <?php if (isset($_POST['format']) && $_POST['format'] != 'all') : ?>
-                <?php if (Format::findOneById($product->getFormatId())->getFormat() == $_POST['format']) : ?>
+                <?php if ($product->getFormat()->format == $_POST['format']) : ?>
                     <?php include('albumSelectedTableRow.php'); ?>
                 <?php endif; ?>
             <?php else: ?>

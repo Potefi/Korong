@@ -46,7 +46,8 @@ h1{
 }
 #navBar{
     background-color: rgb(244, 244, 244);
-    box-shadow: 0 0 15px 0 rgba(27,27,27,0.53);
+    box-shadow: 0 0 15px rgba(120,120,120,0.36);
+    border-bottom: 2px solid #d5d5d5;
 }
 .carousel-inner .carousel-item{
     height: 300px;
@@ -154,6 +155,9 @@ thead>tr{
     padding: 5px 20px 5px 20px;
     font-size: 2rem;
 }
+.admin-selection-row-hover:hover{
+    background-color: #f1f1f1;
+}
 @media only screen and (min-width: 1200px) and (max-width: 1399px){
     .card-img-top{
         min-width: 255px;
@@ -170,7 +174,7 @@ thead>tr{
         display: flex;
     }
 }
-@media only screen and (min-width: 1713px) {
+@media (min-width: 1713px) {
     .filter-bgcolor{
         background-color: rgb(240, 240, 240);
     }
@@ -219,16 +223,11 @@ thead>tr{
         margin-left: 25px;
     }
     .searchResultsText{
-        font-size: 2.5rem;
         color: #393e41;
         padding-left: 25px;
     }
 }
-@media only screen and (min-width: 2000px) {
-    .flex-container{
-        display: flex;
-        width: 100%;
-    }
+@media (min-width: 2000px) {
     .flex-sidebar{
         flex: 13%;
         position: relative;
@@ -237,19 +236,13 @@ thead>tr{
     .flex-content{
         flex: 87%;
     }
-    .block-container{
-        display: none;
-    }
 }
-@media only screen and (max-width: 1712px) {
-    .block-container{
-        display: block;
-    }
+@media (max-width: 1712px) {
     .page-wrapper{
         display: block;
     }
 }
-@media only screen and (max-width: 633px) {
+@media (max-width: 633px) {
     #card-sm{
         max-width: 300px;
         margin-right: auto;
@@ -261,7 +254,7 @@ thead>tr{
         margin-right: auto;
     }
 }
-@media only screen and (min-width: 297px) and (max-width: 575px) {
+@media (min-width: 297px) and (max-width: 575px) {
     .no-cover-img{
         width: 275px;
     }
@@ -269,7 +262,7 @@ thead>tr{
         width: 275px;
     }
 }
-@media only screen and (min-width: 576px) and (max-width: 767px){
+@media (min-width: 576px) and (max-width: 767px){
     .no-cover-img{
         width: 245px;
     }
@@ -277,7 +270,7 @@ thead>tr{
         width: 245px;
     }
 }
-@media only screen and (max-width: 767px){
+@media (max-width: 767px){
     .selected-album-title{
         font-size: 2rem;
         text-align: center;
@@ -290,8 +283,18 @@ thead>tr{
         width: 80%;
     }
 }
-@media only screen and (min-width: 767px){
+@media (min-width: 767px){
     .input-group>.form-select{
         max-width: 300px;
+    }
+}
+@media (max-width: 567px){
+    #admin-selection-links, #admin-selection-title{
+        text-align: center;
+    }
+}
+@media (min-width: 567px){
+    #admin-selection-links{
+        text-align: right;
     }
 }
