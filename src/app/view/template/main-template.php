@@ -3,7 +3,7 @@
 /** @var string $title */
 /** @var string $content */
 
-use app\model\User;
+use app\model\Album;
 
 ?>
 <!doctype html>
@@ -25,8 +25,8 @@ use app\model\User;
 <!-- Including the navbar -->
 <?php include ("navbar.php") ?>
 
-<!-- Show the page struct on admin page for easier navigation -->
 <?php if (strpos($title, "Admin") !== false) : ?>
+    <!-- Show the page struct on admin page for easier navigation -->
     <p class="mt-3">
         <a href="/zarodolgozat/?controller=<?= $_GET['controller'] ?>" class="text-dark text-decoration-none pl-5 h5">admin</a> /
         <!-- If action contains artist then show a link for artists page -->
@@ -36,6 +36,9 @@ use app\model\User;
         <!-- If action contains album then show a link for albums page -->
         <?php if (isset($_GET['action']) && strpos(strtolower($_GET['action']), "album") !== false) : ?>
             <a href="/zarodolgozat/?controller=<?= $_GET['controller'] ?>&action=albums" class="text-dark text-decoration-none h5">albums</a> /
+            <?php if ($_GET['action'] != 'albums') : ?>
+                <a href="/zarodolgozat/?controller=<?= $_GET['controller'] ?>&action=<?= $_GET['action'] ?>" class="text-dark text-decoration-none h5"><?= $_GET['action'] ?></a> /
+            <?php endif; ?>
         <?php endif; ?>
     </p>
 <?php endif; ?>

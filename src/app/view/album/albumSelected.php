@@ -1,7 +1,6 @@
 <?php
 
 use app\model\Album;
-use app\model\Artist;
 use app\model\Format;
 use app\model\Product;
 

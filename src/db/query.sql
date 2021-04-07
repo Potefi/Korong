@@ -1,5 +1,6 @@
 -- SQL for musickorong DB --
 
+SELECT * FROM album JOIN product ON album.id = product.albumId ORDER BY album.id DESC LIMIT 3;
 
 -- Adatbázis eldobása --
 DROP DATABASE IF EXISTS musickorong;

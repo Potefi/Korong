@@ -5,7 +5,7 @@ use app\model\Artist;
 ?>
 <div class="container">
     <!-- Including file for new artist form -->
-    <?php include('newArtist.php'); ?>
+    <?php include('_newArtist.php'); ?>
 
     <div class="row my-5">
         <div class="col-12">

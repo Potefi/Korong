@@ -94,7 +94,7 @@ class Purchase
         }
         if(!preg_match("/^[A-ZÖÜÓŐÚÉÁŰÍ]{1}[a-zöüóőúéáűí]{1,}$/",$this->city))
         {
-            $this->errors['phone'] = 'A város nem megfelelő';
+            $this->errors['city'] = 'A város nem megfelelő';
         }
         return count($this->errors) == 0;
     }

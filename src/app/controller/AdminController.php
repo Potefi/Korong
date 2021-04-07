@@ -72,28 +72,15 @@ class AdminController extends MainController
         $this->title = 'Admin';
         return $this->render('albums');
     }
-
     public function actionModifyAlbum(){
         $this->title = 'Admin';
         if (!isset($_GET['id'])){
             if (isset($_POST['album'])){
-                if (isset($_FILES['cover']) && !empty($_FILES['cover']['name'])) {
-                    $folder = 'img/albumCovers';
-                    $fname = $_FILES['cover']['name'];
-                    if ((endsWith($fname, ".jpg") || endsWith($fname, ".png")) && $_FILES['cover']['error'] == UPLOAD_ERR_OK) {
-                        $from = $_FILES['cover']['tmp_name'];
-                        $to = "$folder/$fname";
-                        $upload = move_uploaded_file($from, $to);
-                        if ($upload) {
-                            if (!Album::updateAlbumWithCover($_POST['album']['id'], $_POST['album'], $fname)) {
-                                $_SESSION['successfulUpdate'] = 'sikertelen';
-                                header('Location: /zarodolgozat/?controller=admin&action=modifyAlbum&id=' . $_POST['album']['id']);
-                                exit();
-                            }
-                        }
-                    }
+                if(isset($_FILES['cover']) && !empty($_FILES['cover']['name']) && Album::updateAlbum($_POST['album'], $_FILES)) {
+                    header('Location: /zarodolgozat/?controller=admin&action=albums');
+                    exit();
                 }else {
-                    if (!Album::updateAlbumWithoutCover($_POST['album']['id'], $_POST['album'])) {
+                    if (!Album::updateAlbumWithoutCover($_POST['album'])) {
                         $_SESSION['successfulUpdate'] = 'sikertelen';
                         header('Location: /zarodolgozat/?controller=admin&action=modifyAlbum&id=' . $_POST['album']['id']);
                         exit();
@@ -105,9 +92,31 @@ class AdminController extends MainController
         }
         return $this->render('modifyAlbum');
     }
-
-    public function actionProducts(){
+    public function actionDeleteAlbum(){
+        if (isset($_GET['id'])){
+            Album::deleteAlbum($_GET['id']);
+            if (Album::findOneById($_GET['id']) == false){
+                $_SESSION['successfulDelete'] = 'sikeres';
+            }else{
+                $_SESSION['successfulDelete'] = 'sikertelen';
+            }
+        }else{
+            $_SESSION['successfulDelete'] = 'sikertelen';
+        }
+        header('Location: /zarodolgozat/?controller=admin&action=albums');
+        exit();
+    }
+    public function actionNewAlbum(){
+        if (isset($_POST['album']) && !empty($_POST['album']))
+        {
+            if(Album::newAlbum($_POST['album'], $_FILES)) {
+                header('Location: /zarodolgozat/?controller=admin&action=albums');
+                exit();
+            }else{
+                $_SESSION['errorMadeByUser'] = 'errorWhileUploadingToDatabase';
+            }
+        }
         $this->title = 'Admin';
-        return $this->render('products');
+        return $this->render('newAlbum');
     }
 }

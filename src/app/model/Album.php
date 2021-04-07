@@ -5,6 +5,7 @@ namespace app\model;
 
 
 use db\Database;
+use function app\controller\endsWith;
 
 class Album
 {
@@ -71,33 +72,26 @@ class Album
     /**
      * @return Album[]
      */
-    public static function FindAll()
+    public static function findAll()
     {
         $pdo = Database::getPdo();
-        $sql = "SELECT * FROM `album`";
+        $sql = "SELECT DISTINCT album.id AS 'id', artistId, title, category, cover, releaseDate FROM album JOIN product ON album.id = product.albumId;";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
-    public static function FindFiftyOldest()
+    public static function findFiftyOldest()
     {
         $pdo = Database::getPdo();
-        $sql = "SELECT * FROM `album` ORDER BY `id` ASC LIMIT 50";
+        $sql = "SELECT DISTINCT album.id AS 'id', artistId, title, category, cover, releaseDate FROM album JOIN product ON album.id = product.albumId ORDER BY album.id ASC LIMIT 50;";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
-    public static function FindLastThree()
+    public static function findLastThree()
     {
         $pdo = Database::getPdo();
-        $sql = "SELECT * FROM `album` ORDER BY `id` DESC LIMIT 3";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
-    }
-    public static function findAllCategories(){
-        $pdo = Database::getPdo();
-        $sql = "SELECT * FROM `album` GROUP BY category";
+        $sql = "SELECT DISTINCT album.id AS 'id', artistId, title, category, cover, releaseDate FROM album JOIN product ON album.id = product.albumId ORDER BY album.id DESC LIMIT 3;";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
@@ -110,41 +104,6 @@ class Album
             ':id' => $id
         ]);
         return $stmt->fetchObject(self::class);
-    }
-    public static function updateAlbumWithCover($id, $album, $cover)
-    {
-        $pdo = Database::getPdo();
-        $sql = "UPDATE `album` SET `artistId` = :artistId, `title` = :title, `category` = :category, `releaseDate` = :releaseDate, `cover` = :cover WHERE `id` = :id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            ':id' => $id,
-            ':artistId' => $album['artistId'],
-            ':title' => $album['title'],
-            ':category' => $album['category'],
-            ':releaseDate' => $album['releaseDate'],
-            ':cover' => $cover
-        ]);
-        if ($stmt){
-            return true;
-        }
-        return false;
-    }
-    public static function updateAlbumWithoutCover($id, $album)
-    {
-        $pdo = Database::getPdo();
-        $sql = "UPDATE `album` SET `artistId` = :artistId, `title` = :title, `category` = :category, `releaseDate` = :releaseDate WHERE `id` = :id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            ':id' => $id,
-            ':artistId' => $album['artistId'],
-            ':title' => $album['title'],
-            ':category' => $album['category'],
-            ':releaseDate' => $album['releaseDate']
-        ]);
-        if ($stmt){
-            return true;
-        }
-        return false;
     }
     public function getArtist(){
         $pdo = Database::getPdo();
@@ -173,5 +132,82 @@ class Album
             ':albumId' => $this->id
         ]);
         return $stmt->fetch(\PDO::FETCH_OBJ);
+    }
+    public static function updateAlbum($album, $cover)
+    {
+        $pdo = Database::getPdo();
+        $sql = "UPDATE `album` SET `artistId` = :artistId, `title` = :title, `category` = :category, `releaseDate` = :releaseDate, `cover` = :cover WHERE `id` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $album['id'],
+            ':artistId' => $album['artistId'],
+            ':title' => $album['title'],
+            ':category' => $album['category'],
+            ':releaseDate' => $album['releaseDate'],
+            ':cover' => self::checkCover($cover)
+        ]);
+        if ($stmt){
+            return true;
+        }
+        return false;
+    }
+    public static function updateAlbumWithoutCover($album)
+    {
+        $pdo = Database::getPdo();
+        $sql = "UPDATE `album` SET `artistId` = :artistId, `title` = :title, `category` = :category, `releaseDate` = :releaseDate WHERE `id` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $album['id'],
+            ':artistId' => $album['artistId'],
+            ':title' => $album['title'],
+            ':category' => $album['category'],
+            ':releaseDate' => $album['releaseDate']
+        ]);
+        if ($stmt){
+            return true;
+        }
+        return false;
+    }
+    public static function deleteAlbum($id)
+    {
+        $pdo = Database::getPdo();
+        $sql = "DELETE FROM `album` WHERE `id` = :id;";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id
+        ]);
+    }
+    public static function newAlbum($album, $files)
+    {
+        $pdo = Database::getPdo();
+        $sql = "INSERT INTO album (artistId, title, category, cover, releaseDate) VALUES (:artistId, :title, :category, :cover, :releaseDate);";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':artistId' => $album['artistId'],
+            ':title' => $album['title'],
+            ':category' => $album['category'],
+            ':cover' => self::checkCover($files),
+            ':releaseDate' => $album['releaseDate'],
+        ]);
+        if ($stmt){
+            return true;
+        }
+        return false;
+    }
+
+    public static function checkCover($files){
+        if (isset($files['cover']) && !empty($files['cover']['name'])){
+            $folder = 'img/albumCovers';
+            $fname = $_FILES['cover']['name'];
+            if ((endsWith($fname, ".jpg") || endsWith($fname, ".png")) && $_FILES['cover']['error'] == UPLOAD_ERR_OK) {
+                $from = $_FILES['cover']['tmp_name'];
+                $to = "$folder/$fname";
+                $upload = move_uploaded_file($from, $to);
+                if ($upload) {
+                    return $fname;
+                }
+            }
+        }
+        return NULL;
     }
 }

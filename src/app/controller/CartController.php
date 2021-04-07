@@ -76,6 +76,7 @@ class CartController extends MainController
                 }
             }
         }
+        // Make the order via transaction
         $pdo = Database::getPdo();
         $pdo->beginTransaction();
         $purchase = new Purchase();

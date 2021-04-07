@@ -40,8 +40,8 @@ use app\model\Product;
                 <select name="selectCategory" id="selectCategory" class="form-select input-bg">
                     <option value="default" hidden selected>Válaszd ki a kategóriát..</option>
                     <option value="all" class="font-italic">Összes</option>
-                    <?php foreach (Album::findAllCategories() as $album) : ?>
-                        <option class="font-weight-bold" value="<?= $album->getCategory(); ?>" <?= isset($categoryStored) && $categoryStored == $album->getCategory()?'selected':'' ?>><?= Category::findOneById($album->getCategory())->getCategory(); ?></option>
+                    <?php foreach (Category::findAll() as $category) : ?>
+                        <option class="font-weight-bold" value="<?= $category->getId(); ?>" <?= isset($categoryStored) && $categoryStored == $category->getCategory()?'selected':'' ?>><?= $category->getCategory(); ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

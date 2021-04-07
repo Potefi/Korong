@@ -5,7 +5,6 @@ namespace app\model;
 
 
 use db\Database;
-use app\model\Track;
 
 
 class Product

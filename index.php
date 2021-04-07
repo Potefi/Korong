@@ -76,7 +76,7 @@ elseif($controllerName == 'UserController')
         $controller = new UserController();
         $content = $controller->actionLogout();
     }
-    elseif ($actionName == 'actionAccount')
+    elseif ($actionName == 'actionAccount' && isset($_SESSION['userId']))
     {
         $controller = new UserController();
         $content = $controller->actionAccount();
@@ -126,9 +126,12 @@ elseif($controllerName == 'AdminController'){
         }elseif ($actionName == 'actionModifyAlbum'){
             $controller = new AdminController();
             $content = $controller->actionModifyAlbum();
-        }elseif ($actionName == 'actionProducts'){
+        }elseif ($actionName == 'actionDeleteAlbum'){
             $controller = new AdminController();
-            $content = $controller->actionProducts();
+            $content = $controller->actionDeleteAlbum();
+        }elseif ($actionName == 'actionNewAlbum'){
+            $controller = new AdminController();
+            $content = $controller->actionNewAlbum();
         }elseif ($actionName == 'actionNewArtist'){
             $controller = new AdminController();
             $content = $controller->actionNewArtist();
