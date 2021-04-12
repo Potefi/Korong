@@ -65,14 +65,14 @@ CREATE TABLE `User`
 CREATE TABLE `Format`
 (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `format` COLLATE utf8_hungarian_ci VARCHAR(10),
+  `format` VARCHAR(10) COLLATE utf8_hungarian_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 CREATE TABLE `Category` 
 ( 
 	`id` INT NOT NULL AUTO_INCREMENT, 
-	`category` COLLATE utf8_hungarian_ci VARCHAR(50) NOT NULL,
+	`category` VARCHAR(50) COLLATE utf8_hungarian_ci NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
