@@ -1,7 +1,5 @@
 -- SQL for musickorong DB --
 
-SELECT * FROM album JOIN product ON album.id = product.albumId ORDER BY album.id DESC LIMIT 3;
-
 -- Adatbázis eldobása --
 DROP DATABASE IF EXISTS musickorong;
 
@@ -9,6 +7,8 @@ DROP DATABASE IF EXISTS musickorong;
 CREATE DATABASE musickorong
 	CHARACTER SET utf8
 	COLLATE utf8_hungarian_ci;
+
+USE musickorong;
 
 -- Táblák --
 CREATE TABLE `Artist` 
