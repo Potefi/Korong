@@ -14,89 +14,97 @@ USE musickorong;
 CREATE TABLE `Artist` 
 ( 
 	`id` INT NOT NULL AUTO_INCREMENT , 
-	`name` VARCHAR(100) NOT NULL , 
+	`name` VARCHAR(100) COLLATE utf8_hungarian_ci NOT NULL , 
 	PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
 CREATE TABLE `Album` 
 ( 
 	`id` INT NOT NULL AUTO_INCREMENT, 
 	`artistId` INT,
-	`title` VARCHAR(150),
+	`title` VARCHAR(150) COLLATE utf8_hungarian_ci,
   `category` INT,
-  `cover` VARCHAR(250),
+  `cover` VARCHAR(250) COLLATE utf8_hungarian_ci,
   `releaseDate` DATE,
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`artistId`) REFERENCES `Artist`(`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
 CREATE TABLE `Product`
 ( 
 	`id` INT NOT NULL AUTO_INCREMENT, 
 	`formatId` INT,
-	`condition` VARCHAR(5),
+	`condition` VARCHAR(5) COLLATE utf8_hungarian_ci,
 	`price` INT,
 	`albumId` INT,
-  `description` VARCHAR(250) DEFAULT NULL,
+  `description` VARCHAR(250) COLLATE utf8_hungarian_ci DEFAULT NULL,
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (albumId) REFERENCES `Album`(`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 ALTER TABLE Product AUTO_INCREMENT = 10000;
 
 CREATE TABLE `Tracklist`
 ( 
 	`productId` INT, 
 	`numberOfTrack` INT,
-	`title` VARCHAR(150),
+	`title` VARCHAR(150) COLLATE utf8_hungarian_ci,
 	`length` VARCHAR(50),
 	FOREIGN KEY (productId) REFERENCES `Product`(`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
 CREATE TABLE `User` 
 ( 
 	`id` INT NOT NULL AUTO_INCREMENT, 
-	`username` VARCHAR(25) NOT NULL,
-  `email` VARCHAR(60) DEFAULT NULL,
-	`password` VARCHAR(250) NOT NULL,
-  `permission` VARCHAR(20) DEFAULT NULL,
+	`username` VARCHAR(25) COLLATE utf8_hungarian_ci NOT NULL,
+  `email` VARCHAR(60) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`password` VARCHAR(250) COLLATE utf8_hungarian_ci NOT NULL,
+  `permission` VARCHAR(20) COLLATE utf8_hungarian_ci DEFAULT NULL,
 	PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
 CREATE TABLE `Format`
 (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `format` VARCHAR(10),
+  `format` COLLATE utf8_hungarian_ci VARCHAR(10),
   PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
 CREATE TABLE `Category` 
 ( 
 	`id` INT NOT NULL AUTO_INCREMENT, 
-	`category` VARCHAR(50) NOT NULL,
+	`category` COLLATE utf8_hungarian_ci VARCHAR(50) NOT NULL,
 	PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
 CREATE TABLE `Order` 
 ( 
 	`orderId` INT NOT NULL, 
   `productId` INT NOT NULL,
   `quantity` INT NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
 CREATE TABLE `OrderDetails` 
 ( 
 	`id` INT NOT NULL AUTO_INCREMENT, 
   `userId` INT DEFAULT NULL,
-  `name` VARCHAR(60),
+  `name` VARCHAR(60) COLLATE utf8_hungarian_ci,
   `phone` VARCHAR(20),
   `postcode` INT,
-  `city` VARCHAR(60),
-  `address` VARCHAR(60),
-  `email` VARCHAR(60),
+  `city` VARCHAR(60) COLLATE utf8_hungarian_ci,
+  `address` VARCHAR(60) COLLATE utf8_hungarian_ci,
+  `email` VARCHAR(60) COLLATE utf8_hungarian_ci,
   `takeover` INT,
   `dateOfOrder` DATE,
-  `status` VARCHAR(250),
+  `status` VARCHAR(250) COLLATE utf8_hungarian_ci,
   PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
 CREATE TABLE `Takeover` 
 ( 
 	`id` INT NOT NULL AUTO_INCREMENT, 
-  `name` VARCHAR(120),
+  `name` VARCHAR(120) COLLATE utf8_hungarian_ci,
   PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- Adatok --
 INSERT INTO artist (`name`) VALUES
