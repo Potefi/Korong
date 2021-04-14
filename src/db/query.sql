@@ -1,16 +1,16 @@
 -- SQL for musickorong DB --
 
--- Adatb·zis eldob·sa --
+-- Adatb√°zis eldob√°sa --
 DROP DATABASE IF EXISTS musickorong;
 
--- Adatb·zis lÈtrehoz·sa --
+-- Adatb√°zis l√©trehoz√°sa --
 CREATE DATABASE musickorong
 	CHARACTER SET utf8
 	COLLATE utf8_hungarian_ci;
 
 USE musickorong;
 
--- T·bl·k --
+-- T√°bl√°k --
 CREATE TABLE `Artist` 
 ( 
 	`id` INT NOT NULL AUTO_INCREMENT , 
@@ -146,8 +146,8 @@ INSERT INTO album (`artistId`, `title`, `category`, `cover`, `releaseDate`) VALU
   (10, 'Demon Days', 2, 'gorillazDemonDays.jpg', '2008-05-23'),
   (10, 'Gorillaz', 2, 'GorillazAlbum.jpg', '2001-03-26'),
   (11, 'Slowhand', 2, 'EricClapton-Slowhand.jpg', '1977-11-25'),
-  (12, 'Rezonancia avagy a prÛfÈta alvil·gi zar·ndoklata', 1, 'rezonanciaFunk.jpg', '2019-12-18'),
-  (12, 'T·ncdalok, Sanzonok, Melodr·m·k', 1, 'funktasztikus-tancdalok-sanzonok-melodramak-Cover-Art.png', '2011-10-01');
+  (12, 'Rezonancia avagy a pr√≥f√©ta alvil√°gi zar√°ndoklata', 1, 'rezonanciaFunk.jpg', '2019-12-18'),
+  (12, 'T√°ncdalok, Sanzonok, Melodr√°m√°k', 1, 'funktasztikus-tancdalok-sanzonok-melodramak-Cover-Art.png', '2011-10-01');
 
 INSERT INTO album (`artistId`, `title`, `category`, `cover`, `releaseDate`) VALUES
   (13, 'Aftermath', 2, 'aftermath.jpg', '1966-04-15');
@@ -248,7 +248,7 @@ INSERT INTO `tracklist` (`productId`, `numberOfTrack`, `title`, `length`) VALUES
 (10008, 16, 'Lock It Up (feat. Anderson .Paak)', '2:50'),
 (10008, 17, 'Farewell', '4:07'),
 (10008, 18, 'No Regrets (feat. Don Toliver)', '3:20'),
-(10008, 19, 'I WIll (feat. KXNG Crooked, Royce Da 5\'9" & Joell Ortiz)', '5:03'),
+(10008, 19, 'I Will (feat. KXNG Crooked, Royce Da 5\'9" & Joell Ortiz)', '5:03'),
 (10008, 20, 'Alfred - Outro', '0:39');
 
 INSERT INTO `tracklist` (`productId`, `numberOfTrack`, `title`, `length`) VALUES 
@@ -286,7 +286,7 @@ INSERT INTO `tracklist` (`productId`, `numberOfTrack`, `title`, `length`) VALUES
 (10009, 32, 'Lock It Up (feat. Anderson .Paak)', '2:50'),
 (10009, 33, 'Farewell', '4:07'),
 (10009, 34, 'No Regrets (feat. Don Toliver)', '3:20'),
-(10009, 35, 'I WIll (feat. KXNG Crooked, Royce Da 5\'9" & Joell Ortiz)', '5:03'),
+(10009, 35, 'I Will (feat. KXNG Crooked, Royce Da 5\'9" & Joell Ortiz)', '5:03'),
 (10009, 36, 'Alfred - Outro', '0:39');
 
 INSERT INTO `Category` (`category`) VALUES
@@ -295,5 +295,5 @@ INSERT INTO `Category` (`category`) VALUES
 ('R&B');
 
 INSERT INTO `Takeover` (`name`) VALUES
-('H·zhoz sz·llÌt·s'),
-('SzemÈlyes ·tvÈtel ¸zlet¸nkben');
+('H√°zhoz sz√°ll√≠t√°s'),
+('Szem√©lyes √°tv√©tel √ºzlet√ºnkben');
